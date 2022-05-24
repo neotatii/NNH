@@ -269,9 +269,6 @@
        margin: 0;  
        color: var(--main-color);  
  }  
-  .projects-section-header .time {  
-       font-size: 20px;  
- }  
   .projects-status {  
        display: flex;  
  }  
@@ -328,77 +325,7 @@
        background-color: var(--link-color-hover);  
        color: var(--link-color-active);  
  }  
-  .messages-section {  
-       flex-shrink: 0;  
-       padding-bottom: 32px;  
-       background-color: var(--projects-section);  
-       margin-left: 24px;  
-       flex: 1;  
-       width: 100%;  
-       border-radius: 30px;  
-       position: relative;  
-       overflow: auto;  
-       transition: all 300ms cubic-bezier(0.19, 1, 0.56, 1);  
- }  
-  .messages-section .messages-close {  
-       position: absolute;  
-       top: 12px;  
-       right: 12px;  
-       z-index: 3;  
-       border: none;  
-       background-color: transparent;  
-       color: var(--main-color);  
-       display: none;  
- }  
-  .messages-section.show {  
-       transform: translateX(0);  
-       opacity: 1;  
-       margin-left: 0;  
- }  
-  .messages-section .projects-section-header {  
-       position: sticky;  
-       top: 0;  
-       z-index: 1;  
-       padding: 32px 24px 0 24px;  
-       background-color: var(--projects-section);  
- }  
-  .message-box {  
-       border-top: 1px solid var(--message-box-border);  
-       padding: 16px;  
-       display: flex;  
-       align-items: flex-start;  
-       width: 100%;  
- }  
-  .message-box:hover {  
-       background-color: var(--message-box-hover);  
-       border-top-color: var(--link-color-hover);  
- }  
-  .message-box:hover + .message-box {  
-       border-top-color: var(--link-color-hover);  
- }  
-  .message-box img {  
-       border-radius: 50%;  
-       object-fit: cover;  
-       width: 40px;  
-       height: 40px;  
- }  
-  .message-header {  
-       display: flex;  
-       align-items: center;  
-       justify-content: space-between;  
-       width: 100%;  
- }  
-  .message-header .name {  
-       font-size: 16px;  
-       line-height: 24px;  
-       font-weight: 700;  
-       color: var(--main-color);  
-       margin: 0;  
- }  
-  .message-content {  
-       padding-left: 16px;  
-       width: 100%;  
- }  
+ 
   .star-checkbox input {  
        opacity: 0;  
        position: absolute;  
@@ -422,17 +349,6 @@
   .star-checkbox input:checked + label svg {  
        fill: var(--star);  
        transition: 0.2s;  
- }  
-  .message-line {  
-       font-size: 14px;  
-       line-height: 20px;  
-       margin: 8px 0;  
-       color: var(--secondary-color);  
-       opacity: 0.7;  
- }  
-  .message-line.time {  
-       text-align: right;  
-       margin-bottom: 0;  
  }  
   .project-boxes {  
        margin: 0 -8px;  
@@ -523,15 +439,14 @@
        padding: 8px;  
        transition: 0.2s;  
  }  
-  .project-btn-more {  
-       padding: 0;  
-       height: 14px;  
-       width: 24px;  
+  .project-btn-delete {  
+       padding: 0;   
+       width: 30px;  
        height: 24px;  
        position: relative;  
        background-color: transparent;  
-       border: none;  
-       flex-shrink: 0;  
+       border: none;   
+       color: #111827;
       /*&:after, &:before {  
             content: '';  
             position: absolute;  
@@ -559,6 +474,9 @@
        line-height: 24px;  
        font-weight: 700;  
        opacity: 0.7;  
+       text-decoration: none;
+       outline: none;
+       color: black;
  }  
   .box-content-subheader {  
        font-size: 14px;  
@@ -657,6 +575,10 @@
        padding: 4px;  
        display: none;  
  }  
+ .Client-name{
+      text-decoration: none;
+      color: black;
+ }
   @media screen and (max-width: 980px) {  
        .project-boxes.jsGridView .project-box-wrapper {  
             width: 50%;  
@@ -789,3 +711,78 @@
             top: 10px;  
       }
     }
+
+
+
+
+
+    .popup.active{
+     top:50%;
+     opacity:1;
+     transform:translate(-50%,-50%)scale(1);
+     transition:top 0ms ease-in-out 0ms,
+                 opacity 200ms ease-in-out 0ms,
+                 transform 200ms ease-in-out 0ms;
+ }
+ 
+ .popup{
+     border-radius: 40px;
+     color: #4f5d75;
+     background-color: #f3f6fd;
+     width: 400px;
+     padding: 20px;
+     box-shadow: 0 0 3px 0 rgba(0,0,0,0.3);
+     margin: 2% auto 0;
+     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+     border: 1px solid #999;
+     outline: none;
+     position: absolute;
+     top:-150%;
+     left:50%;
+     opacity: 0;
+     transform:translate(-50%,-50%) scale(1.25);
+     transition: top 0ms ease-in-out 200ms, opacity 200ms ease-in-out 0ms, transform 20ms ease-in-out 0ms;
+   }
+   
+   .dc-sign-up {
+    color: #4f5d75;
+     cursor: pointer;
+     text-decoration: none;
+     font-size: 2rem;
+     text-align: center;
+     font-family: 'Lato', sans-serif;
+     margin-bottom: 30px;
+   }
+    
+   
+   
+   #checkbox {
+   width: fit-content;
+   }
+    
+   .input-box {
+     border-radius: 10px;
+     padding: 10px;
+     margin: 10px 0;
+     width: 95%;
+     background-color: #bfc0c0;
+     border: 1px solid #999;
+     outline: none;
+   }
+   
+   button{
+     color: #fff ;
+     background-color: #ef8354;
+     width: 100%;
+     padding: 10px;
+     border-radius: 20px;
+     font-size: 15px;
+     margin: 10px 0;
+     border: none;
+     outline: none;
+     cursor: pointer;
+   }
+   
+   button:hover{
+     opacity: 0.7;
+   }
