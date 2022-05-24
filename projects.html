@@ -176,7 +176,12 @@
         <div class="projects-section">
           <div class="projects-section-header">
             <p>Projects</p>
-            <button id="show-login" class="add-btn" title="Add New Project">
+            <button
+              data-modal-target="#modal"
+              id="show-login"
+              class="add-btn"
+              title="Add New Project"
+            >
               <svg
                 class="btn-icon"
                 xmlns="http://www.w3.org/2000/svg"
@@ -195,95 +200,119 @@
               </svg>
             </button>
 
-            <!--Start of Add Formulaire-->
-            <form name="cv" method="post" action="">
-              <fieldset class="popup">
-                <div class="close-btn">&times;</div>
-                <h2 class="dc-sign-up">SIGN UP</h2>
+            <!--Start of Modal-->
+            <div class="modal" id="modal">
+              <div class="modal-header">
+                <!--Modal Header-->
+                <div class="title">New Project</div>
+                <button data-close-button class="close-button">&times;</button>
+              </div>
 
-                <label for="type">Type</label><br />
-                <input
-                  class="input-box"
-                  placeholder="Project type"
-                  list="type"
-                  name=""
-                />
-                <datalist id="type">
-                  <option>Building</option>
-                  <option>House</option>
-                  <option>Store</option>
-                  <option>Office</option>
-                </datalist>
-                <br />
+              <div class="modal-body">
+                <!--Modal Body-->
+                <form action="#">
+                  <div class="user-details">
+                    <div class="input-box">
+                      <span class="details">Type</span>
+                      <input
+                        class="input-box"
+                        placeholder="Tipo de proyecto"
+                        list="type"
+                        name="tipo_proyecto"
+                        required
+                      />
+                      <datalist id="type">
+                        <option>Building</option>
+                        <option>House</option>
+                        <option>Store</option>
+                        <option>Office</option>
+                      </datalist>
+                    </div>
 
-                <label for="client">Client</label><br />
-                <input
-                  class="input-box"
-                  placeholder="Client name"
-                  list="Client"
-                  name=""
-                />
-                <datalist id="Client">
-                  <option>Client 1</option>
-                  <option>Client 2</option>
-                  <option>Client 3</option>
-                  <option>Client 4</option>
-                </datalist>
-                <br />
+                    <div class="input-box">
+                      <span class="details">DNI Cliente</span>
+                      <input
+                        type="text"
+                        name="dni_cliente"
+                        placeholder="DNI Cliente.."
+                        required
+                      />
+                    </div>
 
-                <label for="surface">Surface</label><br />
-                <input
-                  class="input-box"
-                  placeholder="m²"
-                  type="number"
-                  min="50"
-                  name=""
-                />
-                <br />
+                    <div class="input-box">
+                      <span class="details">Calle</span>
+                      <input
+                        type="text"
+                        name="calle"
+                        placeholder="Calle.."
+                        required
+                      />
+                    </div>
 
-                <label for="floors">Floors</label><br />
-                <input
-                  class="input-box"
-                  placeholder="elhasyoutnaoufal@gmail.com"
-                  type="number"
-                  min="1"
-                  max="20"
-                  name=""
-                /><br />
+                    <div class="input-box">
+                      <span class="details">Ciudad</span>
+                      <input
+                        type="text"
+                        name="ciudad"
+                        placeholder="Ciudad.."
+                        required
+                      />
+                    </div>
 
-                <label for="adress">Adress</label><br />
-                <input
-                  type="adress"
-                  class="input-box"
-                  name=""
-                  placeholder="Project's adress"
-                /><br />
+                    <div class="input-box">
+                      <span class="details">Codigo Postal</span>
+                      <input
+                        type="number"
+                        name="cp"
+                        placeholder="Codigo Postal.."
+                        required
+                      />
+                    </div>
 
-                <label for="city">City</label><br />
-                <input
-                  type="text"
-                  class="input-box"
-                  placeholder="City"
-                  name=""
-                />
-                <br />
+                    <div class="input-box">
+                      <span class="details">Pais</span>
+                      <input
+                        type="nombre"
+                        name="pais"
+                        placeholder="Pais.."
+                        required
+                      />
+                    </div>
 
-                <label for="city">Country</label><br />
-                <input
-                  type="text"
-                  class="input-box"
-                  placeholder="Country"
-                  name=""
-                /><br />
+                    <div class="input-box">
+                      <span class="details">Fecha Inicio</span>
+                      <input
+                        type="date"
+                        name="fecha_inicio"
+                        placeholder="Fecha Inicio (aaaa-mm-dd).."
+                        required
+                      />
+                    </div>
 
-                <label>Description</label><br />
-                <textarea rows="8" cols="100"></textarea>
-                <br /><br />
+                    <div class="input-box">
+                      <span class="details">Numero Plantas</span>
+                      <input
+                        type="number"
+                        name="plantas"
+                        placeholder="Numero Plantas.."
+                        required
+                      />
+                    </div>
 
-                <button type="button" class="sign-btn">Add</button>
-              </fieldset>
-            </form>
-            <!--End of Add Formulaire-->
+                    <div class="input-box">
+                      <span class="details">Description</span>
+                      <textarea rows="4" cols="88"></textarea>
+                    </div>
+                  </div>
+
+                  <div class="button">
+                    <input type="submit" value="Register" />
+                  </div>
+                </form>
+              </div>
+            </div>
+            <div id="overlay"></div>
+            <!--End of Modal-->
           </div>
           <div class="projects-section-line">
             <div class="projects-status">
@@ -381,5 +410,6 @@
     </div>
 
     <script src="/popup.js"></script>
+    <script src="/script.js"></script>
   </body>
 </html>

@@ -2,106 +2,114 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
-    <link rel="stylesheet" href="/test.css" />
-
-    <!-- FONTAWESOME CDN -->
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.0/css/all.min.css"
-      integrity="sha512-BnbUDfEUfV0Slx6TunuB042k9tuKe3xrD6q4mg5Ed72LTgzDIcLPxg6yI2gcMFRyomt+yJJxE+zJwNmxki6/RA=="
-      crossorigin="anonymous"
-      referrerpolicy="no-referrer"
-    />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Modal</title>
+    <link href="/popup.css" rel="stylesheet" />
+    <script defer src="/script.js"></script>
   </head>
   <body>
-    <div class="center">
-      <button id="show-login"><i class="fas fa-trash"></i></button>
+    <button data-modal-target="#modal">Open Modal</button>
+    <div class="modal" id="modal">
+      <div class="modal-header">
+        <!--Modal Header-->
+        <div class="title">New Project</div>
+        <button data-close-button class="close-button">&times;</button>
+      </div>
+
+      <div class="modal-body">
+        <!--Modal Body-->
+        <form action="#">
+          <div class="user-details">
+            <div class="input-box">
+              <span class="details">Type</span>
+              <input
+                class="input-box"
+                placeholder="Tipo de proyecto"
+                list="type"
+                name="tipo_proyecto"
+                required
+              />
+              <datalist id="type">
+                <option>Building</option>
+                <option>House</option>
+                <option>Store</option>
+                <option>Office</option>
+              </datalist>
+            </div>
+
+            <div class="input-box">
+              <span class="details">DNI Cliente</span>
+              <input
+                type="text"
+                name="dni_cliente"
+                placeholder="DNI Cliente.."
+                required
+              />
+            </div>
+
+            <div class="input-box">
+              <span class="details">Calle</span>
+              <input type="text" name="calle" placeholder="Calle.." required />
+            </div>
+
+            <div class="input-box">
+              <span class="details">Ciudad</span>
+              <input
+                type="text"
+                name="ciudad"
+                placeholder="Ciudad.."
+                required
+              />
+            </div>
+
+            <div class="input-box">
+              <span class="details">Codigo Postal</span>
+              <input
+                type="number"
+                name="cp"
+                placeholder="Codigo Postal.."
+                required
+              />
+            </div>
+
+            <div class="input-box">
+              <span class="details">Pais</span>
+              <input type="nombre" name="pais" placeholder="Pais.." required />
+            </div>
+
+            <div class="input-box">
+              <span class="details">Fecha Inicio</span>
+              <input
+                type="date"
+                name="fecha_inicio"
+                placeholder="Fecha Inicio (aaaa-mm-dd).."
+                required
+              />
+            </div>
+
+            <div class="input-box">
+              <span class="details">Numero Plantas</span>
+              <input
+                type="number"
+                name="plantas"
+                placeholder="Numero Plantas.."
+                required
+              />
+            </div>
+
+            <div class="input-box">
+              <span class="details">Description</span>
+              <textarea rows="4" cols="100"></textarea>
+            </div>
+          </div>
+
+          <div class="button">
+            <input type="submit" value="Register" />
+          </div>
+        </form>
+      </div>
     </div>
-
-    <div class="form">
-      <fieldset class="popup">
-        <h2 class="dc-sign-up">SIGN UP</h2>
-
-        <label for="type">Type</label><br />
-        <input
-          class="input-box"
-          placeholder="Project type"
-          list="type"
-          name=""
-        />
-        <datalist id="type">
-          <option>Building</option>
-          <option>House</option>
-          <option>Store</option>
-          <option>Office</option>
-        </datalist>
-        <br /><br />
-
-        <label for="client">Client</label><br />
-        <input
-          class="input-box"
-          placeholder="Client name"
-          list="Client"
-          name=""
-        />
-        <datalist id="Client">
-          <option>Client 1</option>
-          <option>Client 2</option>
-          <option>Client 3</option>
-          <option>Client 4</option>
-        </datalist>
-        <br /><br />
-
-        <label for="surface">Surface</label><br />
-        <input
-          class="input-box"
-          placeholder="m²"
-          type="number"
-          min="50"
-          name=""
-        />
-        <br /><br />
-
-        <label for="floors">Floors</label><br />
-        <input
-          class="input-box"
-          placeholder="elhasyoutnaoufal@gmail.com"
-          type="number"
-          min="1"
-          max="20"
-          name=""
-        /><br /><br />
-
-        <label for="adress">Adress</label><br />
-        <input
-          type="adress"
-          class="input-box"
-          name=""
-          placeholder="Project's adress"
-        /><br /><br />
-
-        <label for="city">City</label><br />
-        <input type="text" class="input-box" placeholder="City" name="" />
-        <br /><br />
-
-        <label for="city">Country</label><br />
-        <input
-          type="text"
-          class="input-box"
-          placeholder="Country"
-          name=""
-        /><br /><br />
-
-        <label>Description</label><br />
-        <textarea rows="8" cols="100"></textarea>
-        <br /><br />
-
-        <button type="button" class="sign-btn">Add</button>
-      </fieldset>
-    </div>
-    <script src="/popup.js"></script>
+    <div id="overlay"></div>
   </body>
 </html>
