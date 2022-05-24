@@ -51,24 +51,7 @@
             <path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"></path>
           </svg>
         </button>
-        <button class="add-btn" title="Add New Project">
-          <svg
-            class="btn-icon"
-            xmlns="http://www.w3.org/2000/svg"
-            width="16"
-            height="16"
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="currentColor"
-            stroke-width="3"
-            stroke-linecap="round"
-            stroke-linejoin="round"
-            class="feather feather-plus"
-          >
-            <line x1="12" y1="5" x2="12" y2="19" />
-            <line x1="5" y1="12" x2="19" y2="12" />
-          </svg>
-        </button>
+        
 
         <button class="profile-btn">
           <img src="https://assets.codepen.io/3306515/IMG_2025.jpg" />
@@ -174,9 +157,35 @@
       </div>
       <div class="projects-section">
         <div class="projects-section-header">
-          <p>Projects</p>
-          <p class="time">December, 12</p>
+          <p> Projects </p>
+          <div class="add-project-container">
+           <!--- <button type="submit" class="btn-add" onclick="openPopup()"> Añadir nuevo proyecto </button>-->
+            <button class="add-btn" title="Add New Project" onclick="openPopup()">
+              <svg
+                class="btn-icon"
+                xmlns="http://www.w3.org/2000/svg"
+                width="16"
+                height="16"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="3"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                class="feather feather-plus"
+              >
+                <line x1="12" y1="5" x2="12" y2="19" />
+                <line x1="5" y1="12" x2="19" y2="12" />
+              </svg>
+            </button>
+
+            <div class = "popup" id = "popup">
+              <h2> Enter information </h2>
+              <button type="button" onclick="closePopup()"> Guradrar </button>
+            </div>
+          </div>
         </div>
+        
         <div class="projects-section-line">
           <div class="projects-status">
             <div class="item-status">
@@ -311,4 +320,15 @@
       </div>
     </div>
   </div>
+  <script>
+    let popup = document.getElementById("popup");
+
+    function openPopup(){
+        popup.classList.add("open-popup"); //Hacer que aparezca el popup
+    }
+
+    function closePopup(){
+        popup.classList.remove("open-popup"); //Hacer que aparezca el popup
+    }
+  </script>
 </html>
