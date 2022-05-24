@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>CURRICULUM VITAE</title>
+    <style type="text/css"></style>
+    <style>
+      * {
+        margin: 10px;
+        background-color: peachpuff;
+      }
+      #title {
+        color: chocolate;
+        text-decoration: underline;
+        text-align: center;
+      }
+      #photo {
+      }
+      form {
+        width: 80%;
+      }
+      label {
+        font-size: large;
+      }
+      legend {
+        font-size: x-large;
+        text-decoration: underline;
+        color: rgb(1, 6, 12);
+      }
+      button {
+        margin-top: 2px;
+        width: 200px;
+      }
+      address {
+        background-color: lightslategrey;
+        width: 80%;
+      }
+      .adresses a {
+        display: block;
+        text-decoration: none;
+        background-color: lightslategrey;
+        margin: 10px;
+        padding-bottom: 10px;
+      }
+    </style>
+  </head>
+  <body>
+    <h1 id="title">CURRICULUM VITAE</h1>
+    <form name="cv" method="post" action="">
+      <label id="photo">photo</label>
+      <!-- accept le type des fichiers a accepetr -->
+      <input
+        id="photo"
+        type="file"
+        accept="image/jpeg,image/png"
+        name="photo"
+      /><br /><br />
+      <fieldset>
+        <legend>Détails personnels :</legend>
+        <label for="prenom">Prénom :</label>
+        <input placeholder="votre prénom" id="prenom" type="text" />
+        <label for="nom">Nom :</label>
+        <input placeholder="votre nom" id="nom" type="text" /><br /><br />
+        <label for="adresse">Adresse :</label>
+        <input placeholder="votre adresse" id="adresse" type="adress" />
+        <label for="phone"> N° téléphone :</label>
+        <input placeholder="+212 6xxxxxxxx" id="phone" type="tel" /><br /><br />
+        <label for="mail"> Adresse émail :</label>
+        <input
+          placeholder="adresse mail"
+          id="mail"
+          type="email"
+          size="50"
+        /><br /><br />
+        <label for="code">Code postal :</label>
+        <input
+          placeholder="Code postal"
+          id="code"
+          type="number"
+          pattern="[0-9]{5}"
+        />
+        <label for="ville">Ville :</label>
+        <input placeholder="Ville" id="ville" type="text" /><br /><br />
+        <label for="age">Age :</label>
+        <input placeholder="votre age " id="age" type="number" min="18" />
+        <label for="etat">Etat civil :</label>
+        <input placeholder="celebataire" id="etat" list="etat civil" />
+        <datalist id="etat civil">
+          <option>Célibataire</option>
+          <option>Marié(e)</option>
+          <option>Divorcé(e)</option>
+          <option>Veu(f/ve)</option>
+        </datalist>
+      </fieldset>
+      <br /><br />
+      <fieldset>
+        <legend>Formation :</legend>
+        <label>Formation :</label><br />
+        <input type="text" size="65" /><br /><br />
+        <label>Etablissement :</label>
+        <input type="text" placeholder="votre établissement" />
+        <label for="ville">Ville :</label>
+        <input placeholder="Ville" id="ville" type="text" /><br /><br />
+        <label for="dated">Date de début :</label>
+        <input type="date" id="dated" />
+        <label for="datef">Date de fin :</label>
+        <input type="date" id="datef" /><br /><br />
+        <input type="button" value="Ajouter une fromation" />
+      </fieldset>
+      <br /><br />
+      <fieldset>
+        <legend>Expérience professionnelle :</legend>
+        <label>Post:</label><br />
+        <input type="text" size="65" /><br /><br />
+        <label>Employeur:</label>
+        <input type="text" />
+        <label for="ville">Ville :</label>
+        <input placeholder="Ville" id="ville" type="text" /><br /><br />
+        <label for="dated">Date de début :</label>
+        <input type="date" id="dated" />
+        <label for="datef">Date de fin :</label>
+        <input type="date" id="datef" /><br />
+        <label>Description:</label><br />
+        <textarea rows="8" cols="100"></textarea>
+        <br /><br />
+        <input type="button" value="Ajouter une éxperience" />
+      </fieldset>
+      <br /><br />
+      <fieldset>
+        <legend>Compétences :</legend>
+        <label>compétence :</label>
+        <input type="text" />
+        <label>Niveau :</label>
+        <select>
+          <option>Débutant(e)</option>
+          <option>Intermédiaire</option>
+          <option>Bien</option>
+          <option>Très bien</option>
+          <option>Excellent</option></select
+        ><br /><br />
+        <input type="button" value="Ajouter une compétence" />
+      </fieldset>
+      <br /><br />
+      <fieldset>
+        <legend>Langues :</legend>
+        <label>langue :</label>
+        <input type="text" />
+        <label>Niveau :</label>
+        <select>
+          <option>Débutant(e)</option>
+          <option>Intermédiaire</option>
+          <option>Bien</option>
+          <option>Très bien</option>
+          <option>Excellent</option></select
+        ><br /><br />
+        <input type="button" value="Ajouter une langue" />
+      </fieldset>
+      <br />
+      <button
+        type="submit"
+        type="submit"
+        style="background-color: rgb(26, 211, 26)"
+      >
+        Envoyer
+      </button>
+      <button type="reset" type="reset" style="background-color: red">
+        Annuler
+      </button>
+    </form>
+    <footer>
+      <address class="adresses">
+        <p style="background-color: lightslategrey; font-size: x-large">
+          contact us:
+        </p>
+        <a href="sefiane.ouami@etu.uae.ac.ma">contacter par mail</a>
+        <a href="tel:0610191055">contacter par téléphone</a>
+        <a href="https://www.youtube.com/channel/UCXSOgxAXMPFJ36Ekr2gkqPw"
+          >Suivez nous en youtube</a
+        >
+      </address>
+    </footer>
+  </body>
+</html>
