@@ -754,7 +754,7 @@
      left: 0;
      bottom: 0;
      height: 3px;
-     width: 30px;
+     width: 90px;
      border-radius: 5px;
      background: linear-gradient(135deg, #71b7e6, #9b59b6);
    }
@@ -820,7 +820,7 @@
      /* transform: scale(0.99); */
      background: linear-gradient(-135deg, #71b7e6, #9b59b6);
      }
-   
+
      @media(max-width: 584px){
        .modal{
         max-width: 100%;
