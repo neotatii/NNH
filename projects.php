@@ -286,7 +286,7 @@
 
                   <div class="input-box">
                     <span class="details">Description</span>
-                    <textarea rows="4" cols="88"></textarea>
+                    <textarea rows="4" cols="88" required name="descripcion"></textarea>
                   </div>
                 </div>
                 
@@ -306,15 +306,16 @@
          <div class="projects-section-line">
           <div class="projects-status">
             <div class="item-status">
-              <span class="status-number">X</span>
-              <span class="status-type">In Progress</span>
-            </div>
-            <div class="item-status">
-              <span class="status-number">X</span>
-              <span class="status-type">Upcoming</span>
-            </div>
-            <div class="item-status">
-              <span class="status-number">X</span>
+              <span class="status-number">
+                <?php
+                  include_once("config.php");
+                  include_once("login.php");
+                  $psql = $connec->query("SELECT count(*) FROM practica.proyectos WHERE contratista = '" . $id_contratista . "';");
+                  $total_p = $psql->fetch();
+                  //echo $total_p;
+                ?>
+                X
+              </span>
               <span class="status-type">Total Projects</span>
             </div>
           </div>
