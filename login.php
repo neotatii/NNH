@@ -1,3 +1,3 @@
 <?php
-$id_contratista = '00422543Z';
+    $id_contratista = '00422543Z';
 ?>

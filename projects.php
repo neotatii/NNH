@@ -1,19 +1,33 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
   <head>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
     <link rel="stylesheet" href="/Projects-style.css" />
-    <script src="projects-app.js"></script>
+
+    <!-- ICONSCOUT CDN -->
+    <link
+      rel="stylesheet"
+      href="https://unicons.iconscout.com/release/v4.0.0/css/line.css"
+    />
+    <!-- FONTAWESOME CDN -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.0/css/all.min.css"
+      integrity="sha512-BnbUDfEUfV0Slx6TunuB042k9tuKe3xrD6q4mg5Ed72LTgzDIcLPxg6yI2gcMFRyomt+yJJxE+zJwNmxki6/RA=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <script src="/projects-app.js"></script>
   </head>
 
   <div class="app-container">
     <div class="app-header">
       <div class="app-header-left">
-        <span class="app-icon"></span>
-        <p class="app-name">Portfolio</p>
+        <img class="app-icon" src="/img/LOGO-NNH.png" alt="" />
+        <p class="app-name">NNH CONSTRUCTION</p>
         <div class="search-wrapper">
           <input class="search-input" type="text" placeholder="Search" />
           <svg
@@ -58,24 +72,7 @@
           <span>Fatine M.</span>
         </button>
       </div>
-      <button class="messages-btn">
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          width="20"
-          height="20"
-          viewBox="0 0 24 24"
-          fill="none"
-          stroke="currentColor"
-          stroke-width="2"
-          stroke-linecap="round"
-          stroke-linejoin="round"
-          class="feather feather-message-circle"
-        >
-          <path
-            d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"
-          />
-        </svg>
-      </button>
+      
     </div>
     <div class="app-content">
       <div class="app-sidebar">
@@ -155,92 +152,158 @@
           </svg>
         </a>
       </div>
+      <!--Projects section-->
       <div class="projects-section">
         <div class="projects-section-header">
-          <p> Projects </p>
-          <div class="add-project-container">
-           <!--- <button type="submit" class="btn-add" onclick="openPopup()"> Añadir nuevo proyecto </button>-->
-            <button class="add-btn" title="Add New Project" onclick="openPopup()">
-              <svg
-                class="btn-icon"
-                xmlns="http://www.w3.org/2000/svg"
-                width="16"
-                height="16"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                stroke-width="3"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                class="feather feather-plus"
-              >
-                <line x1="12" y1="5" x2="12" y2="19" />
-                <line x1="5" y1="12" x2="19" y2="12" />
-              </svg>
-            </button>
+          <p>Projects</p>
 
-            <div class = "popup" id = "popup">
-              <h2> Enter information </h2>
-              <label for="type">Type</label><br />
-              <h2 >Tipo
-                <input
-                  class="input-box"
-                  placeholder="Tipo de proyecto"
-                  list="type"
-                  name="tipo_proyecto"
-                />
-                <datalist id="type">
-                  <?php
-                    include_once("config.php");
-                    $psql = "SELECT tipo FROM practica.proyectos GROUP BY tipo;";
-                    foreach($connec->query($psql) as $row){
-                        echo'<option>'.$row['tipo'].'</option>';
-                    }
-                  ?>
-                </datalist>
-              </h2>
+          <button
+              data-modal-target="#modal"
+              id="show-login"
+              class="add-btn"
+              title="Add New Project"
+          >
+            <svg
+              class="btn-icon"
+              xmlns="http://www.w3.org/2000/svg"
+              width="16"
+              height="16"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="3"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              class="feather feather-plus"
+            >
+              <line x1="12" y1="5" x2="12" y2="19" />
+              <line x1="5" y1="12" x2="19" y2="12" />
+            </svg>
+          </button>
 
-              <label for="calle">Calle</label>
-              <input type="text" name="calle" placeholder="Calle.." required/>
-              
-              <br/>
-              <label for="ciudad">Ciudad</label>
-              <input type="text" name="ciudad" placeholder="Ciudad.." required/>
-              <br/>
-              <label for="cp">Codigo Postal</label>
-              <input type="number" name="cp" placeholder="Codigo Postal.." required/>
+          <!--Start of Modal-->
+          <div class="modal" id="modal">
+            <div class="modal-header">
+              <!--Modal Header-->
+              <div class="title">New Project</div>
+              <button data-close-button class="close-button">&times;</button>
+            </div>
 
-              <label for="pais">Pais</label>
-              <input type="nombre" name="pais" placeholder="Pais.." required/>
+            <div class="modal-body">
+              <!--Modal Body-->
+              <form action="#" method="POST">
+                <div class="user-details">
+                  <div class="input-box">
+                    <span class="details">Type</span>
+                    <input
+                      class="input-box"
+                      placeholder="Tipo de proyecto"
+                      list="type"
+                      name="tipo_proyecto"
+                      required
+                    />
+                    <datalist id="type">
+                      <?php
+                        include_once("config.php");
+                        $psql = "SELECT tipo FROM practica.proyectos GROUP BY tipo;";
+                        foreach($connec->query($psql) as $row){
+                            echo'<option>'.$row['tipo'].'</option>';
+                        }
+                      ?>
+                    </datalist>
+                  </div>
 
-              <label for="fecha_inicio">Fecha Inicio</label>
-              <input type="date"" name="fecha_inicio" placeholder="Fecha Inicio (aaaa-mm-dd).." required/>
+                  <div class="input-box">
+                    <span class="details">DNI Cliente</span>
+                    <input
+                      type="text/number"
+                      name="dni_cliente"
+                      placeholder="DNI Cliente.."
+                      required
+                    />
+                    
+                  </div>
 
-              <label for="plantas">Numero Plantas</label>
-              <input type="number" name="plantas" placeholder="Numero Plantas.." required/>
-              
-              <label for="cliente">DNI Cliente</label>
-              <input type="text" name="dni_cliente" placeholder="DNI Cliente.." required/>
+                  <div class="input-box">
+                    <span class="details">Calle</span>
+                    <input
+                      type="text"
+                      name="calle"
+                      placeholder="Calle.."
+                      required
+                    />
+                  </div>
 
-              <br/>
-              
-            <button type="button" name="guardar" onclick="closePopup()"> Guradrar </button>
-              <!--<?php
-                if(isset( $_POST['guardar'] )){
-                  if(strlen($_POST['tipo_proyecto']) <= 2){
-                      echo '<h3 class = "bad"> ¡Por favor, introduce una tipo_proyecto válida! </h3>';
-                  }
-                  else{
-                    echo "<script> closePopup(); </script>";
-                  }
-                }
-              ?>--->
-              
+                  <div class="input-box">
+                    <span class="details">Ciudad</span>
+                    <input
+                      type="text"
+                      name="ciudad"
+                      placeholder="Ciudad.."
+                      required
+                    />
+                  </div>
+
+                  <div class="input-box">
+                    <span class="details">Codigo Postal</span>
+                    <input
+                      type="number"
+                      name="cp"
+                      placeholder="Codigo Postal.."
+                      required
+                    />
+                  </div>
+
+                  <div class="input-box">
+                    <span class="details">Pais</span>
+                    <input
+                      type="nombre"
+                      name="pais"
+                      placeholder="Pais.."
+                      required
+                    />
+                  </div>
+
+                  <div class="input-box">
+                    <span class="details">Fecha Inicio</span>
+                    <input
+                      type="date"
+                      name="fecha_inicio"
+                      placeholder="Fecha Inicio (aaaa-mm-dd).."
+                      required
+                    />
+                  </div>
+
+                  <div class="input-box">
+                    <span class="details">Numero Plantas</span>
+                    <input
+                      type="number"
+                      name="plantas"
+                      placeholder="Numero Plantas.."
+                      required
+                    />
+                  </div>
+
+                  <div class="input-box">
+                    <span class="details">Description</span>
+                    <textarea rows="4" cols="88"></textarea>
+                  </div>
+                </div>
+                
+                <div class="button">
+                  <input type="submit" value="Save" name="registrar"/>
+                </div>
+              </form>
             </div>
           </div>
+          <div id="overlay"></div>
+          <?php
+  include_once("insertProject.php"); ?>
+          <!--End of Modal-->
         </div>
-        
-        <div class="projects-section-line">
+
+        <!--Start of Project boxes-->
+         <div class="projects-section-line">
           <div class="projects-status">
             <div class="item-status">
               <span class="status-number">X</span>
@@ -313,22 +376,7 @@
                             <span>'.$row['fecha_inicio'].'</span>
                             <div class="more-wrapper">
                                <button class="project-btn-more">
-                               <svg
-                                  xmlns="http://www.w3.org/2000/svg"
-                                  width="24"
-                                  height="24"
-                                  viewBox="0 0 24 24"
-                                  fill="none"
-                                  stroke="currentColor"
-                                  stroke-width="2"
-                                  stroke-linecap="round"
-                                  stroke-linejoin="round"
-                                  class="feather feather-more-vertical"
-                                >
-                                  <circle cx="12" cy="12" r="1" />
-                                  <circle cx="12" cy="5" r="1" />
-                                  <circle cx="12" cy="19" r="1" />
-                                </svg>
+                                  <i class="fas fa-trash"></i>
                               </button>
                             </div>
                           </div>
@@ -336,16 +384,7 @@
                             <p class="box-content-header">'.$row['tipo'].'</p>
                             <p class="box-content-subheader">'.$row['calle'].', '.$row['ciudad'].' </p>
                           </div>
-                          <!---<div class="box-progress-wrapper">
-                            <p class="box-progress-header">Progress</p>
-                            <div class="box-progress-bar">
-                              <span
-                                class="box-progress"
-                                style="width: 60%; background-color: #ff942e"
-                              ></span>
-                            </div>
-                            <p class="box-progress-percentage">60%</p>
-                          </div> --->
+
                           <div class="project-box-footer">
                             <div class="participants">
                               <img
@@ -356,8 +395,9 @@
                 $fila =  $connec->query("SELECT * FROM practica.clientes WHERE dni = '".$row['cliente']."';");
                 $id_cliente = $fila->fetch();
 
-                echo'  
-                              <p> '.$id_cliente['nombre'].' </p>
+                echo'
+                              <a href="/" style="text-decoration: none"> &nbsp; &nbsp;'.$id_cliente['nombre'].'</a>  
+                              <!--<p> '.$id_cliente['nombre'].' </p> -->
                               
                             </div>
                             <div class="days-left" style="color: #ff942e">'.$row['id_proyecto'].'</div>
@@ -374,15 +414,6 @@
       </div>
     </div>
   </div>
-  <script>
-    let popup = document.getElementById("popup");
-
-    function openPopup(){
-        popup.classList.add("open-popup"); //Hacer que aparezca el popup
-    }
-
-    function closePopup(){
-        popup.classList.remove("open-popup"); //Hacer que aparezca el popup
-    }
-  </script>
+  <script src="/popup.js"></script>
+  <script src="/script.js"></script>
 </html>
