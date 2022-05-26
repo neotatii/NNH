@@ -181,7 +181,61 @@
 
             <div class = "popup" id = "popup">
               <h2> Enter information </h2>
-              <button type="button" onclick="closePopup()"> Guradrar </button>
+              <label for="type">Type</label><br />
+              <h2 >Tipo
+                <input
+                  class="input-box"
+                  placeholder="Tipo de proyecto"
+                  list="type"
+                  name="tipo_proyecto"
+                />
+                <datalist id="type">
+                  <?php
+                    include_once("config.php");
+                    $psql = "SELECT tipo FROM practica.proyectos GROUP BY tipo;";
+                    foreach($connec->query($psql) as $row){
+                        echo'<option>'.$row['tipo'].'</option>';
+                    }
+                  ?>
+                </datalist>
+              </h2>
+
+              <label for="calle">Calle</label>
+              <input type="text" name="calle" placeholder="Calle.." required/>
+              
+              <br/>
+              <label for="ciudad">Ciudad</label>
+              <input type="text" name="ciudad" placeholder="Ciudad.." required/>
+              <br/>
+              <label for="cp">Codigo Postal</label>
+              <input type="number" name="cp" placeholder="Codigo Postal.." required/>
+
+              <label for="pais">Pais</label>
+              <input type="nombre" name="pais" placeholder="Pais.." required/>
+
+              <label for="fecha_inicio">Fecha Inicio</label>
+              <input type="date"" name="fecha_inicio" placeholder="Fecha Inicio (aaaa-mm-dd).." required/>
+
+              <label for="plantas">Numero Plantas</label>
+              <input type="number" name="plantas" placeholder="Numero Plantas.." required/>
+              
+              <label for="cliente">DNI Cliente</label>
+              <input type="text" name="dni_cliente" placeholder="DNI Cliente.." required/>
+
+              <br/>
+              
+            <button type="button" name="guardar" onclick="closePopup()"> Guradrar </button>
+              <!--<?php
+                if(isset( $_POST['guardar'] )){
+                  if(strlen($_POST['tipo_proyecto']) <= 2){
+                      echo '<h3 class = "bad"> ¡Por favor, introduce una tipo_proyecto válida! </h3>';
+                  }
+                  else{
+                    echo "<script> closePopup(); </script>";
+                  }
+                }
+              ?>--->
+              
             </div>
           </div>
         </div>
@@ -248,8 +302,8 @@
            
           <?php
             
-            $connec = new PDO("pgsql:host=ubiwan.epsevg.upc.edu;dbname=est_b7533039", "est_b7533039", "dB.b7533039"); 
-            $id_contratista = '00422543Z';
+            include_once("config.php"); 
+            include_once("login.php");
             $psql = "SELECT * FROM practica.proyectos WHERE contratista = '" . $id_contratista . "';";
             foreach($connec->query($psql) as $row){
 
