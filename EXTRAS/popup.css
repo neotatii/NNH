@@ -1,7 +1,5 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap');
 *, *::after, *::before {
   box-sizing: border-box;
-  font-family: 'Poppins',sans-serif;
 }
 
 .modal {
@@ -14,10 +12,8 @@
   border-radius: 10px;
   z-index: 10;
   background-color: white;
-  width: 100%;
-  max-width: 700px;
-  padding: 25px 30px;
-  box-shadow: 0 5px 10px rgba(0,0,0,0.15);
+  width: 500px;
+  max-width: 80%;
 }
 
 .modal.active {
@@ -33,20 +29,8 @@
 }
 
 .modal-header .title {
-  font-size: 25px;
-  font-weight: 500;
-  position: relative;
-}
-
-.modal-header .title::before{
-  content: "";
-  position: absolute;
-  left: 0;
-  bottom: 0;
-  height: 3px;
-  width: 30px;
-  border-radius: 5px;
-  background: linear-gradient(135deg, #71b7e6, #9b59b6);
+  font-size: 1.25rem;
+  font-weight: bold;
 }
 
 .modal-header .close-button {
@@ -58,83 +42,9 @@
   font-weight: bold;
 }
 
-.modal-body form .user-details{
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
-  margin: 20px 0 12px 0;
+.modal-body {
+  padding: 10px 15px;
 }
-form .user-details .input-box{
-  margin-bottom: 15px;
-  width: calc(100% / 2 - 20px);
-}
-form .input-box span.details{
-  display: block;
-  font-weight: 500;
-  margin-bottom: 5px;
-}
-.user-details .input-box input{
-  height: 45px;
-  width: 100%;
-  outline: none;
-  font-size: 16px;
-  border-radius: 5px;
-  padding-left: 15px;
-  border: 1px solid #ccc;
-  border-bottom-width: 2px;
-  transition: all 0.3s ease;
-}
-.user-details .input-box input:focus,
-.user-details .input-box input:valid{
-  border-color: #9b59b6;
-}
-
- form .button{
-   height: 45px;
-   margin: 35px 0
- }
- form .button input{
-   height: 100%;
-   width: 100%;
-   border-radius: 5px;
-   border: none;
-   color: #fff;
-   font-size: 18px;
-   font-weight: 500;
-   letter-spacing: 1px;
-   cursor: pointer;
-   transition: all 0.3s ease;
-   background: linear-gradient(135deg, #71b7e6, #9b59b6);
- }
- form .button input:hover{
-  /* transform: scale(0.99); */
-  background: linear-gradient(-135deg, #71b7e6, #9b59b6);
-  }
-
-  @media(max-width: 584px){
-    .modal{
-     max-width: 100%;
-   }
-   form .user-details .input-box{
-       margin-bottom: 15px;
-       width: 100%;
-     }
-     form .category{
-       width: 100%;
-     }
-     .content form .user-details{
-       max-height: 300px;
-       overflow-y: scroll;
-     }
-     .user-details::-webkit-scrollbar{
-       width: 5px;
-     }
-     }
-     @media(max-width: 459px){
-     .container .content .category{
-       flex-direction: column;
-     }
-   }
 
 #overlay {
   position: fixed;
@@ -152,98 +62,3 @@ form .input-box span.details{
   opacity: 1;
   pointer-events: all;
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-/*.popup{
-    position:absolute;
-    top:-150%;
-    left:50%;
-    opacity: 0;
-    transform:translate(-50%,-50%) scale(1.25);
-    width:380px;
-    padding:20px 30px;
-    background:#fff;
-    box-shadow:2px 2px 5px 5px rgba(0,0,0,0.15);
-    border-radius:10px;
-    transition: top 0ms ease-in-out 200ms, opacity 200ms ease-in-out 0ms, transform 20ms ease-in-out 0ms;
-}
-
-.popup.active{
-    top:50%;
-    opacity:1;
-    transform:translate(-50%,-50%)scale(1);
-    transition:top 0ms ease-in-out 0ms,
-                opacity 200ms ease-in-out 0ms,
-                transform 200ms ease-in-out 0ms;
-}
-
-.popup .close-btn{
-    position:absolute;
-    top:10px;
-    right:10px;
-    width:15px;
-    height:15px;
-    background:#888;
-    color:#eee;
-    text-align:center;
-    line-height: 15px;
-    border-radius: 15px;
-    cursor: pointer;
-}
-
-.popup .form h2{
-    text-align:center;
-    color:#222;
-    margin:10px 0px 20px;
-    font-size:25px;
-}
-
-.popup .form .form-element{
-    margin:15px 0px;
-}
-
-.popup .form .form-element label{
-    font-size:14px;
-    color:#222;
-}
-
-.popup .form .form-element input[type="text"],
-.popup .form .form-element input[type="password"]{
-    margin-top:5px;
-    display:block;
-    width:100%;
-    padding:10px;
-    outline: none;
-    border:1px solid #aaa ;
-}
-
-.popup .form .form-element input[type="checkbox"]{
-    margin-right:5px;
-}
-
-.popup .form .form-element button{
-    width:100%;
-    height:40px;
-    border:none;
-    outline:none;
-    font-size:16px;
-    background:#222;
-    color:#f5f5f5;
-    border-radius:10px;
-    cursor:pointer;
-}*/
-
-
-
-
