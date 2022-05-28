@@ -233,7 +233,7 @@
                       <input
                         type="text/number"
                         name="dni_cliente"
-                        placeholder="DNI Cliente.."
+                        placeholder="DNI Cliente"
                         required
                       />
                     </div>
@@ -243,7 +243,7 @@
                       <input
                         type="text"
                         name="calle"
-                        placeholder="Calle.."
+                        placeholder="Calle"
                         required
                       />
                     </div>
@@ -253,7 +253,7 @@
                       <input
                         type="text"
                         name="ciudad"
-                        placeholder="Ciudad.."
+                        placeholder="Ciudad"
                         required
                       />
                     </div>
@@ -263,17 +263,17 @@
                       <input
                         type="number"
                         name="cp"
-                        placeholder="Codigo Postal.."
+                        placeholder="Codigo Postal"
                         required
                       />
                     </div>
 
                     <div class="input-box">
                       <span class="details">Pais</span>
-                      <input
+                      <inp
                         type="nombre"
                         name="pais"
-                        placeholder="Pais.."
+                        placeholder="Pais"
                         required
                       />
                     </div>
@@ -293,14 +293,34 @@
                       <input
                         type="number"
                         name="plantas"
-                        placeholder="Numero Plantas.."
+                        placeholder="Numero Plantas"
+                        required
+                      />
+                    </div>
+
+                    <div class="input-box">
+                      <span class="details">Architecto</span>
+                      <input
+                        type="text"
+                        name="architecto"
+                        placeholder="Architecto"
+                        required
+                      />
+                    </div>
+
+                    <div class="input-box">
+                      <span class="details">Superficie</span>
+                      <input
+                        type="number"
+                        name="Superficie"
+                        placeholder="m²"
                         required
                       />
                     </div>
 
                     <div class="input-box">
                       <span class="details">Description</span>
-                      <textarea rows="4" cols="88"></textarea>
+                      <textarea required rows="4" cols="88"></textarea>
                     </div>
                   </div>
 
@@ -379,9 +399,12 @@
                 <div class="project-box-header">
                   <span>23/05/2023</span>
                   <div class="more-wrapper">
-                    <button class="project-btn-delete">
-                      <i class="fas fa-trash"></i>
-                    </button>
+                    <div class="more-wrapper">
+                      <button class="project-btn-delete">
+                        <i class="fas fa-trash"></i>
+                      </button>
+                    </div>
+                  </div>
                   </div>
                 </div>
                 <div class="project-box-content-header">

@@ -249,22 +249,35 @@
        display: flex;  
        flex-direction: column;  
  }  
+  .projects-section-line {  
+       display: flex;  
+       justify-content: space-between;  
+       align-items: center;  
+       padding-bottom: 32px;  
+ }  
   .projects-section-header {  
-       display: flex;
-       align-items: center;
-       text-align: center;
+       display: flex;  
+       justify-content: space-between;  
+       align-items: center;  
        margin-bottom: 24px;  
        color: var(--main-color);  
  }  
-  .projects-section-header p { 
+  .projects-section-header p {  
        font-size: 24px;  
        line-height: 32px;  
        font-weight: 700;  
        opacity: 0.9;  
-       margin: 0;
-       color: var(--main-color); 
+       margin: 0;  
+       color: var(--main-color);  
  }  
-
+  .projects-status {  
+       display: flex;  
+ }  
+  .item-status {  
+       display: flex;  
+       flex-direction: column;  
+       margin-right: 16px;  
+ }  
   .item-status:not(:last-child) .status-type:after {  
        content: '';  
        position: absolute;  
@@ -346,15 +359,15 @@
        display: flex;  
        flex-wrap: wrap;  
  }  
-  .project-boxes.jsGridView .project-box-wrapper {  
-       width: 33.3%;  
+  .project-boxes.jsGridView .client-box-wrapper {  
+       width: 33.33%;  
  }  
-  .project-boxes.jsListView .project-box {  
+  .project-boxes.jsListView .profile-box {  
        display: flex;  
        border-radius: 10px;  
        position: relative;  
  }  
-  .project-boxes.jsListView .project-box > * {  
+  .project-boxes.jsListView .profile-box > * {  
        margin-right: 24px;  
  }  
   .project-boxes.jsListView .more-wrapper {  
@@ -397,12 +410,7 @@
        order: 3;  
        flex: 1;  
  }  
-  .project-box {  
-       --main-color-card: #dbf6fd;  
-       border-radius: 30px;  
-       padding: 16px;  
-       background-color: var(--main-color-card);  
- }  
+
   .project-box-header {  
        display: flex;  
        align-items: center;  
@@ -423,8 +431,8 @@
   .project-box-content-header p {  
        margin: 0;  
  }  
-  .project-box-wrapper {  
-       padding: 8px;  
+  .client-box-wrapper {  
+       padding: 5px;  
        transition: 0.2s;  
  }  
   .project-btn-delete {  
@@ -458,7 +466,7 @@
        position: relative;  
  }  
   .box-content-header {  
-       font-size: 22px;  
+       font-size: 16px;  
        line-height: 24px;  
        font-weight: 700;  
        opacity: 0.7;  
@@ -545,8 +553,6 @@
        flex-shrink: 0;  
        padding: 6px 16px;  
        font-weight: 700;  
-       align-items: center;
-       text-align: center;
  }  
   .mode-switch.active .moon {  
        fill: var(--main-color);  
@@ -570,7 +576,7 @@
       color: black;
  }
   @media screen and (max-width: 980px) {  
-       .project-boxes.jsGridView .project-box-wrapper {  
+       .project-boxes.jsGridView .client-box-wrapper {  
             width: 50%;  
       }  
        .status-number, .status-type {  
@@ -643,7 +649,7 @@
        .search-input {  
             max-width: 120px;  
       }  
-       .project-boxes.jsGridView .project-box-wrapper {  
+       .project-boxes.jsGridView .client-box-wrapper {  
             width: 100%;  
       }  
        .projects-section {  
@@ -693,7 +699,7 @@
             padding: 6px 6px;  
             text-align: center;  
       }  
-       .project-boxes.jsListView .project-box > * {  
+       .project-boxes.jsListView .profile-box > * {  
             margin-right: 10px;  
       }  
        .project-boxes.jsListView .more-wrapper {  
@@ -715,7 +721,7 @@
      background-color: white;
      width: 100%;
      max-width: 700px;
-     padding: 25px 30px;
+     padding: 10px 30px;
      box-shadow: 0 5px 10px rgba(0,0,0,0.15);
    }
    
@@ -764,7 +770,7 @@
      margin: 20px 0 12px 0;
    }
    form .user-details .input-box{
-     margin-bottom: 15px;
+     margin-bottom: 5px;
      width: calc(100% / 2 - 20px);
    }
    form .input-box span.details{
@@ -790,7 +796,7 @@
    
     form .button{
       height: 45px;
-      margin: 35px 0
+      margin: 15px 0
     }
     form .button input{
       height: 100%;
@@ -853,4 +859,78 @@
    }
 
 
+/*Clients box wrapper*/
 
+.profile-box {  
+    --main-color-card: #67a8a8;  
+    border-radius: 30px;  
+    padding: 16px;  
+    background-color: var(--main-color-card);  
+    text-align: center;
+    position: relative;
+    margin: 0 10px;
+}  
+
+  .menu-icon{
+      width: 25px;
+      position: absolute;
+      left: 40px;
+      top: 40px;
+      cursor: pointer;
+  }
+
+  .setting-icon{
+      width: 25px;
+      position: absolute;
+      right: 40px;
+      top: 40px;
+      cursor: pointer;
+  }
+
+  .profile-pic{
+      width: 150px;
+      border-radius: 50%;
+      background-color: #fff;
+      padding: 6px;
+      margin-top: 40px;
+  }
+
+  .profile-bottom{
+      background-color: #fff;
+      color: #999;
+      padding: 60px 0;
+      margin-right: -90px;
+      margin-left: -90px;
+      margin-bottom: -40px;
+      border-radius: 20px;
+      margin-top: -10px;
+  }
+
+  .profile-bottom img{
+      width: 15px;
+      margin-top: 15px;
+      cursor: pointer;
+  }
+
+  .profile-box h3{
+      font-size: 18px;
+      margin-top: 10px;
+      font-weight: 500;
+  }
+
+  .profile-box p{
+    font-size: 12px;
+    font-weight: 250;
+}
+
+  .social-media img{
+      width: 20px;
+      margin: 15px 5px;
+      cursor: pointer;
+  }
+
+.client-box-wrapper a{
+    text-decoration: none;
+    outline: none;
+    color: #111827;
+}
