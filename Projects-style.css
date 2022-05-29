@@ -521,7 +521,7 @@ a {
      transition: 0.2s;
 }
 
-.project-btn-delete {
+.btn-delete {
      padding: 0;
      width: 30px;
      height: 24px;
@@ -529,24 +529,6 @@ a {
      background-color: transparent;
      border: none;
      color: #111827;
-     /*&:after, &:before {  
-            content: '';  
-            position: absolute;  
-            width: 6px;  
-            height: 6px;  
-            border-radius: 50%;  
-            background-color: var(--main-color);  
-            opacity: .8;  
-            left: 50%;  
-            transform: translatex(-50%);  
-      }  
-       &:before {  
-            top: 0;  
-      }  
-       &:after {  
-            bottom: 0;  
-      }  
-      */
 }
 
 .more-wrapper {
@@ -1016,4 +998,10 @@ form .button input:hover {
 #overlay.active {
      opacity: 1;
      pointer-events: all;
+}
+
+.delete {
+     text-decoration: none;
+     outline: none;
+     color: #000;
 }

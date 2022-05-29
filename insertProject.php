@@ -13,7 +13,7 @@
     $fecha_inicio = $_POST['fecha_inicio'];
     $plantas = $_POST['plantas'];
     $decripcion = $_POST['descripcion'];
-    $arquitecto = '13325412N';
+    $arquitecto = $_POST['arquitecto'];
 
     $error = "¡¡Se ha añadido el proyecto correctamente!!";
     
@@ -56,6 +56,13 @@
             $prep->bindParam(":cliente",$cliente);
             $prep->bindParam(":arquitecto",$arquitecto);
             $prep->execute();
+
+            /*$validar_insert =  $connec->query("SELECT * FROM practica.practicas WHERE id_proyecto = '$id_proj';");
+            $validar_insert = $validar_insert->fetch();
+
+            if(!$validar_insert['id_proyecto']){
+                $error = "Ha habido un problema. Vuelve a intentarlo.";
+            }*/
         }
     }
 

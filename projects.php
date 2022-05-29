@@ -76,7 +76,7 @@
     </div>
     <div class="app-content">
       <div class="app-sidebar">
-        <a href="" class="app-sidebar-link active">
+        <a href="/projects.php" class="app-sidebar-link active">
           <svg
             xmlns="http://www.w3.org/2000/svg"
             width="24"
@@ -93,7 +93,7 @@
             <polyline points="9 22 9 12 15 12 15 22" />
           </svg>
         </a>
-        <a href="" class="app-sidebar-link">
+        <a href="/clients.php" class="app-sidebar-link">
           <svg
             class="link-icon"
             xmlns="http://www.w3.org/2000/svg"
@@ -161,7 +161,7 @@
               data-modal-target="#modal"
               id="show-login"
               class="add-btn"
-              title="Add New Project"
+              title="Añadir nuevo Proyectos"
           >
             <svg
               class="btn-icon"
@@ -185,7 +185,7 @@
           <div class="modal" id="modal">
             <div class="modal-header">
               <!--Modal Header-->
-              <div class="title">New Project</div>
+              <div class="title">Nuevo Proyecto</div>
               <button data-close-button class="close-button">&times;</button>
             </div>
 
@@ -194,7 +194,7 @@
               <form action="#" method="POST">
                 <div class="user-details">
                   <div class="input-box">
-                    <span class="details">Type</span>
+                    <span class="details">Tipo</span>
                     <input
                       class="input-box"
                       placeholder="Tipo de proyecto"
@@ -275,6 +275,26 @@
                   </div>
 
                   <div class="input-box">
+                    <span class="details">DNI Arquitecto</span>
+                    <input
+                      type="text/number"
+                      name="arquitecto"
+                      placeholder="DNI Arquitecto.."
+                      required
+                    />
+                  </div>
+                  
+                  <div class="input-box">
+                    <span class="details">Superficie</span>
+                    <input
+                      type="number"
+                      name="superficie"
+                      placeholder="Superficie.."
+                      required
+                    />
+                  </div>
+
+                  <div class="input-box">
                     <span class="details">Numero Plantas</span>
                     <input
                       type="number"
@@ -310,13 +330,13 @@
                 <?php
                   include_once("config.php");
                   include_once("login.php");
-                  $psql = $connec->query("SELECT count(*) FROM practica.proyectos WHERE contratista = '" . $id_contratista . "';");
+                  $psql = $connec->query("SELECT count(*) FROM practica.proyectos WHERE contratista = '" . $id_contratista . "';"); //
                   $total_p = $psql->fetch();
-                  //echo $total_p;
+                  echo $total_p['count'];
                 ?>
-                X
+                
               </span>
-              <span class="status-type">Total Projects</span>
+              <span class="status-type">Total Proyectos</span>
             </div>
           </div>
           <div class="view-actions">
@@ -363,12 +383,26 @@
           </div>
         </div>
         <div class="project-boxes jsGridView">
-           
-          <?php
+          
+          <?php 
             
             include_once("config.php"); 
             include_once("login.php");
-            $psql = "SELECT * FROM practica.proyectos WHERE contratista = '" . $id_contratista . "';";
+            include_once("deleteProject.php");
+            
+            if(isset($_SESSION['message'])):
+              echo '<div class="alert alert-'.$_SESSION['msg_type'].'">';
+              echo $_SESSION['message'];
+              unset($_SESSION['message']);
+
+              echo'</div>';
+
+              
+            endif;
+            
+            
+            $psql = "SELECT * FROM practica.proyectos WHERE contratista = '" . $id_contratista . "' ORDER BY fecha_inicio DESC;;";
+            
             foreach($connec->query($psql) as $row){
 
                 echo '<div class="project-box-wrapper">
@@ -376,11 +410,17 @@
                           <div class="project-box-header">
                             <span>'.$row['fecha_inicio'].'</span>
                             <div class="more-wrapper">
-                               <button class="project-btn-more">
-                                  <i class="fas fa-trash"></i>
-                              </button>
+                              <form method="post">
+                                <button type="submit" class="btn-delete" name="delete">
+                                  
+                                    <a class="delete" href="deleteProject.php?delete=';echo $row['id_proyecto']; 
+                                    echo'" 
+                                      > <i class="fas fa-trash"></i> </a>
+                                </button>
+                              </form>
                             </div>
                           </div>
+                        
                           <div class="project-box-content-header">
                             <p class="box-content-header">'.$row['tipo'].'</p>
                             <p class="box-content-subheader">'.$row['calle'].', '.$row['ciudad'].' </p>
@@ -407,8 +447,8 @@
                       </div> 
                 ';
 
-            }        
-            
+            }     
+           
           ?>
         
         </div>
