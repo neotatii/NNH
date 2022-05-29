@@ -422,7 +422,7 @@ a {
      flex-wrap: wrap;
 }
 
-.project-boxes.jsGridView .project-box-wrapper {
+.project-boxes.jsGridView .project-box-wrapper .client-box-wrapper {
      width: 33.3%;
 }
 
@@ -662,7 +662,7 @@ a {
 }
 
 @media screen and (max-width: 980px) {
-     .project-boxes.jsGridView .project-box-wrapper {
+     .project-boxes.jsGridView .project-box-wrapper .client-box-wrapper{
           width: 50%;
      }
 
@@ -763,7 +763,7 @@ a {
           max-width: 120px;
      }
 
-     .project-boxes.jsGridView .project-box-wrapper {
+     .project-boxes.jsGridView .project-box-wrapper .client-box-wrapper {
           width: 100%;
      }
 
@@ -1005,3 +1005,18 @@ form .button input:hover {
      outline: none;
      color: #000;
 }
+
+.client-box-wrapper a {
+     text-decoration: none;
+     outline: none;
+     color: #111827;
+}
+ .client-box-wrapper {
+      padding: 5px;
+      transition: 0.2s;
+ }
+
+ .Client-name {
+      text-decoration: none;
+      color: black;
+ }

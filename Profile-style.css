@@ -92,3 +92,19 @@
       margin: 30px 5px;
       cursor: pointer;
   }
+
+  .project-boxes.jsGridView .client-box-wrapper {
+      width: 33.33%;
+  }
+  .client-box-wrapper {
+      padding: 5px;
+      transition: 0.2s;
+  }
+  .Client-name {
+      text-decoration: none;
+      color: black;
+  }
+  .Client-name {
+    text-decoration: none;
+    color: black;
+}

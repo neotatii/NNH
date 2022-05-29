@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
-    <link rel="stylesheet" href="/Projects-style.css" />
+    <link rel="stylesheet" href="clients-style.css" />
 
     <!-- ICONSCOUT CDN -->
     <link
@@ -323,8 +323,8 @@
             
             include_once("config.php"); 
             include_once("login.php");
-            include_once("deleteProject.php");
-            
+            include_once("deleteClient.php");
+            include_once("editClient.php");
             if(isset($_SESSION['message'])):
               echo '<div class="alert alert-'.$_SESSION['msg_type'].'">';
               echo $_SESSION['message'];
@@ -340,47 +340,47 @@
             
             foreach($connec->query($psql) as $row){
 
-                echo '<div class="project-box-wrapper">
-                        <div class="project-box" style="background-color: #fee4cb">
+                echo '<div class="client-box-wrapper">
+                        <div class="profile-box">
+                          
                           <div class="project-box-header">
-                            <span>'.$row['dni'].'</span>
                             <div class="more-wrapper">
-                              <form method="post">
+                              <div class="more-wrapper">
+                                <form method="post">
+                                  <button data-modal-target="#modal" id="show-login" class="project-btn-delete add-btn">
+                                    <a href="editClient.php?edit=';echo $row['dni']; 
+                                      echo' "><i class="fas fa-edit"></i></a>
+                                  </button>
+                                </form>
+                                ';
 
-                                <button type="submit" class="btn-delete" name="delete">
-                                  
-                                    <a class="delete" href="deleteProject.php?delete=';echo $row['id_proyecto']; 
-                                    echo'" 
-                                      > <i class="fas fa-trash"></i> </a>
-                                </button>
-
-                              </form>
+                                if(isset($_GET['edit'])){
+                                  echo'<p>ABIERTOOO</p>';
+                                }
+                                
+                                echo'
+                              </div>
+                            </div>
+                            <div class="more-wrapper">
+                              <div class="more-wrapper">
+                                <form method="post">
+                                  <button type="submit" class="project-btn-delete" name="delete">
+                                      <a class="delete" href="deleteClient.php?delete=';echo $row['dni']; 
+                                      echo' " 
+                                        > <i class="fas fa-trash"></i> </a>
+                                  </button>
+                                </form>
+                              </div>
                             </div>
                           </div>
                         
-                          <div class="project-box-content-header">
-                            <h3>'.$row['nombre'].'</h3>
-                            <p class="box-content-subheader">'.$row['email'].' </p>
-                            <p class="box-content-subheader">'.$row['phone'].'</p>
+                          <h3>'.$row['nombre'].'</h3>
+                          <p >'.$row['email'].' </p>
+                          <div class="social-media">
+                            <p><i class="fas fa-phone"></i>  '.$row['phone'].'</p>
                           </div>
-
-                          <div class="project-box-footer">
-                            <div class="participants">
-                              <!--<img
-                                src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=2550&q=80"
-                                alt="participant"
-                              /> -->';
-                              
-                //$fila =  $connec->query("SELECT * FROM practica.clientes WHERE dni = '".$row['cliente']."';");
-                //$id_cliente = $fila->fetch();
-
-                echo'
-                              <!--<a href="/" style="text-decoration: none"> &nbsp; &nbsp;'.$row['phone'].'</a>  -->
-                              
-                              
-                            </div>
-                            <!--<div class="days-left" style="color: #ff942e">'.$row['sexo'].'</div>-->
-                          </div>
+                          <div class="days-left" style="color: black"> '.$row['dni'].' </div>
+                          
                         </div>
                       </div> 
                 ';
