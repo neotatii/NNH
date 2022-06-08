@@ -69,7 +69,15 @@
 
         <button class="profile-btn">
           <img src="https://assets.codepen.io/3306515/IMG_2025.jpg" />
-          <span>Fatine M.</span>
+          <span>
+            <?php
+                  include_once("config.php");
+                  include_once("login.php");
+                  $psql = $connec->query("SELECT nombre FROM practica.contratistas WHERE dni = '" . $id_contratista . "';"); 
+                  $total_p = $psql->fetch();
+                  echo $total_p['nombre'];
+            ?>
+          </span>
         </button>
       </div>
       
@@ -185,7 +193,7 @@
           <div class="modal" id="modal">
             <div class="modal-header">
               <!--Modal Header-->
-              <div class="title">New Project</div>
+              <div class="title">Nuevo Cliente</div>
               <button data-close-button class="close-button">&times;</button>
             </div>
 
@@ -257,8 +265,9 @@
           <!--End of Modal-->
         </div>
 
-        <!--Start of Project boxes-->
-         <div class="projects-section-line">
+        
+        <div class="projects-section-line">
+          
           <div class="projects-status">
             <div class="item-status">
               <span class="status-number">
@@ -274,49 +283,9 @@
               <span class="status-type">Total Clientes</span>
             </div>
           </div>
-          <div class="view-actions">
-            <button class="view-btn list-view" title="List View">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="24"
-                height="24"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                stroke-width="2"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                class="feather feather-list"
-              >
-                <line x1="8" y1="6" x2="21" y2="6" />
-                <line x1="8" y1="12" x2="21" y2="12" />
-                <line x1="8" y1="18" x2="21" y2="18" />
-                <line x1="3" y1="6" x2="3.01" y2="6" />
-                <line x1="3" y1="12" x2="3.01" y2="12" />
-                <line x1="3" y1="18" x2="3.01" y2="18" />
-              </svg>
-            </button>
-            <button class="view-btn grid-view active" title="Grid View">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="20"
-                height="20"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                stroke-width="2"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                class="feather feather-grid"
-              >
-                <rect x="3" y="3" width="7" height="7" />
-                <rect x="14" y="3" width="7" height="7" />
-                <rect x="14" y="14" width="7" height="7" />
-                <rect x="3" y="14" width="7" height="7" />
-              </svg>
-            </button>
-          </div>
         </div>
+
+        <!--Start of Client boxes-->
         <div class="project-boxes jsGridView">
           
           <?php 
@@ -324,7 +293,7 @@
             include_once("config.php"); 
             include_once("login.php");
             include_once("deleteClient.php");
-            include_once("editClient.php");
+            //include_once("editClient.php");
             if(isset($_SESSION['message'])):
               echo '<div class="alert alert-'.$_SESSION['msg_type'].'">';
               echo $_SESSION['message'];
@@ -344,24 +313,31 @@
                         <div class="profile-box">
                           
                           <div class="project-box-header">
-                            <div class="more-wrapper">
+                            
+                            <!--<div class="more-wrapper">  Edit
                               <div class="more-wrapper">
                                 <form method="post">
                                   <button data-modal-target="#modal" id="show-login" class="project-btn-delete add-btn">
-                                    <a href="editClient.php?edit=';echo $row['dni']; 
-                                      echo' "><i class="fas fa-edit"></i></a>
+                                    <a href="editClient.php?edit=';
+                                      echo $$row['dni']; 
+                                      echo' "><i class="fas fa-edit"></i>
+                                    </a>
                                   </button>
                                 </form>
-                                ';
+                              </div>
+                            </div>-->
 
-                                if(isset($_GET['edit'])){
-                                  echo'<p>ABIERTOOO</p>';
-                                }
-                                
-                                echo'
+                            <div class="more-wrapper">
+                              <div class="more-wrapper">
+                                <a class="edit" href="Edit-client.php?edit='; echo $row['dni']; echo' ">
+                                  <button id="show-login" class="project-btn-delete add-btn">
+                                      <i class="fas fa-edit"></i>
+                                  </button>
+                                </a>
                               </div>
                             </div>
-                            <div class="more-wrapper">
+
+                            <div class="more-wrapper">  <!--Delete-->
                               <div class="more-wrapper">
                                 <form method="post">
                                   <button type="submit" class="project-btn-delete" name="delete">
@@ -372,6 +348,7 @@
                                 </form>
                               </div>
                             </div>
+
                           </div>
                         
                           <h3>'.$row['nombre'].'</h3>
