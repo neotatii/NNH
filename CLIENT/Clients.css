@@ -859,6 +859,162 @@
    }
 
 
+
+/*Modal1 Style*/
+.modal1 {
+     position: fixed;
+     top: 50%;
+     left: 50%;
+     transform: translate(-50%, -50%) scale(0);
+     transition: 200ms ease-in-out;
+     border: 1px solid black;
+     border-radius: 10px;
+     z-index: 10;
+     background-color: white;
+     width: 100%;
+     max-width: 700px;
+     padding: 10px 30px;
+     box-shadow: 0 5px 10px rgba(0,0,0,0.15);
+   }
+   
+   .modal1.active {
+     transform: translate(-50%, -50%) scale(1);
+   }
+   
+   .modal-header1 {
+     padding: 10px 15px;
+     display: flex;
+     justify-content: space-between;
+     align-items: center;
+     border-bottom: 1px solid black;
+   }
+   
+   .modal-header1 .title1 {
+     font-size: 25px;
+     font-weight: 500;
+     position: relative;
+   }
+   
+   .modal-header1 .title1::before{
+     content: "";
+     position: absolute;
+     left: 0;
+     bottom: 0;
+     height: 3px;
+     width: 90px;
+     border-radius: 5px;
+     background: linear-gradient(135deg, #71b7e6, #9b59b6);
+   }
+   
+   .modal-header1 .close-button1 {
+     cursor: pointer;
+     border: none;
+     outline: none;
+     background: none;
+     font-size: 1.25rem;
+     font-weight: bold;
+   }
+   
+   .modal-body1 form .user-details1{
+     display: flex;
+     flex-wrap: wrap;
+     justify-content: space-between;
+     margin: 20px 0 12px 0;
+   }
+   form .user-details1 .input-box{
+     margin-bottom: 5px;
+     width: calc(100% / 2 - 20px);
+   }
+   form .input-box span.details{
+     display: block;
+     font-weight: 500;
+     margin-bottom: 5px;
+   }
+   .user-details1 .input-box input{
+     height: 45px;
+     width: 100%;
+     outline: none;
+     font-size: 16px;
+     border-radius: 5px;
+     padding-left: 15px;
+     border: 1px solid #ccc;
+     border-bottom-width: 2px;
+     transition: all 0.3s ease;
+   }
+   .user-details1 .input-box input:focus,
+   .user-details1 .input-box input:valid{
+     border-color: #9b59b6;
+   }
+   
+    form .button{
+      height: 45px;
+      margin: 15px 0
+    }
+    form .button input{
+      height: 100%;
+      width: 100%;
+      border-radius: 5px;
+      border: none;
+      color: #fff;
+      font-size: 18px;
+      font-weight: 500;
+      letter-spacing: 1px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      background: linear-gradient(135deg, #71b7e6, #9b59b6);
+    }
+    form .button input:hover{
+     /* transform: scale(0.99); */
+     background: linear-gradient(-135deg, #71b7e6, #9b59b6);
+     }
+
+     @media(max-width: 584px){
+       .modal1{
+        max-width: 100%;
+      }
+      form .user-details1 .input-box{
+          margin-bottom: 15px;
+          width: 100%;
+        }
+        form .category{
+          width: 100%;
+        }
+        .content form .user-details1{
+          max-height: 300px;
+          overflow-y: scroll;
+        }
+        .user-details1::-webkit-scrollbar{
+          width: 5px;
+        }
+        }
+        @media(max-width: 459px){
+        .container .content .category{
+          flex-direction: column;
+        }
+      }
+   
+   #overlay1 {
+     position: fixed;
+     opacity: 0;
+     transition: 200ms ease-in-out;
+     top: 0;
+     left: 0;
+     right: 0;
+     bottom: 0;
+     background-color: rgba(0, 0, 0, .5);
+     pointer-events: none;
+   }
+   
+   #overlay1.active {
+     opacity: 1;
+     pointer-events: all;
+   }
+
+
+
+
+
+
 /*Clients box wrapper*/
 
 .profile-box {  

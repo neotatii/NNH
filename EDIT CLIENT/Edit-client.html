@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
-    <link rel="stylesheet" href="/CLIENT/Clients.css" />
+    <link rel="stylesheet" href="/EDIT CLIENT/Edit-client.css" />
 
     <!-- ICONSCOUT CDN -->
     <link
@@ -20,6 +20,7 @@
       crossorigin="anonymous"
       referrerpolicy="no-referrer"
     />
+    <script src="/projects-app.js"></script>
   </head>
 
   <body>
@@ -71,6 +72,24 @@
             <span>Aybüke C.</span>
           </button>
         </div>
+        <button class="messages-btn">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="20"
+            height="20"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            class="feather feather-message-circle"
+          >
+            <path
+              d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"
+            />
+          </svg>
+        </button>
       </div>
       <div class="app-content">
         <div class="app-sidebar">
@@ -156,172 +175,78 @@
         <!--Projects section-->
         <div class="projects-section">
           <div class="projects-section-header">
-            <p>Clients</p>
-            <button
-              data-modal-target="#modal"
-              id="show-login"
-              class="add-btn"
-              title="Add New Project"
-            >
-              <svg
-                class="btn-icon"
-                xmlns="http://www.w3.org/2000/svg"
-                width="16"
-                height="16"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                stroke-width="3"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                class="feather feather-plus"
-              >
-                <line x1="12" y1="5" x2="12" y2="19" />
-                <line x1="5" y1="12" x2="19" y2="12" />
-              </svg>
-            </button>
-
-            <!--Start of Modal-->
-            <div class="modal" id="modal">
-              <div class="modal-header">
-                <!--Modal Header-->
-                <div class="title">New Client</div>
-                <button data-close-button class="close-button">&times;</button>
-              </div>
-
-              <div class="modal-body">
-                <!--Modal Body-->
-                <form action="#">
-                  <div class="user-details">
-                    <div class="input-box">
-                      <span class="details">Name</span>
-                      <input
-                        class="input-box"
-                        placeholder="Name"
-                        type="text"
-                        name="name"
-                        required
-                      />
-                    </div>
-
-                    <div class="input-box">
-                      <span class="details">Last Name</span>
-                      <input
-                        type="text"
-                        name="last_name"
-                        placeholder="last name"
-                        required
-                      />
-                    </div>
-
-                    <div class="input-box">
-                      <span class="details">Sex</span>
-                      <input
-                        list="type"
-                        name="sex"
-                        placeholder="sex"
-                        required
-                      />
-                      <datalist id="type">
-                        <option>Male</option>
-                        <option>Female</option>
-                        <option>Don't specify</option>
-                      </datalist>
-                    </div>
-
-                    <div class="input-box">
-                      <span class="details">E-mail</span>
-                      <input
-                        type="email"
-                        name="email"
-                        placeholder="E-mail"
-                        required
-                      />
-                    </div>
-
-                    <div class="input-box">
-                      <span class="details">Phone</span>
-                      <input
-                        type="tel"
-                        name="telephone"
-                        placeholder="telephone"
-                        required
-                      />
-                    </div>
-
-                    <div class="input-box">
-                      <span class="details">DNI Cliente</span>
-                      <input
-                        type="number"
-                        name="DNI"
-                        placeholder="DNI Cliente"
-                        required
-                      />
-                    </div>
-                  </div>
-
-                  <div class="button">
-                    <input type="submit" value="Save" />
-                  </div>
-                </form>
-              </div>
-            </div>
-            <div id="overlay"></div>
-            <!--End of Modal-->
-          </div>
-          <div class="projects-section-line">
-            <div class="projects-status">
-              <div class="item-status">
-                <span class="status-number">45</span>
-                <span class="status-type">In Progress</span>
-              </div>
-              <div class="item-status">
-                <span class="status-number">24</span>
-                <span class="status-type">Upcoming</span>
-              </div>
-              <div class="item-status">
-                <span class="status-number">62</span>
-                <span class="status-type">Total Projects</span>
-              </div>
-            </div>
+            <p>Naoufal Elhasyouty #344541</p>
           </div>
 
-          <!--Start of Project boxes-->
-          <div class="project-boxes jsGridView">
-          <div class="client-box-wrapper">
-          <a href="">
-            <div class="profile-box">
-              <div class="project-box-header">
-                <div class="more-wrapper">
-                  <div class="more-wrapper">
-                    <a href="/EDIT CLIENT/Edit-client.html">
-                      <button               
-                    id="show-login"
-                    class="project-btn-delete add-btn">
-                      <i class="fas fa-edit"></i>
-                    </button>
-                    </a>
-                  </div>
+          <div class="content">
+            <form action="#">
+              <div class="user-details">
+                <div class="input-box">
+                  <span class="details">Name</span>
+                  <input
+                    class="input-box"
+                    placeholder="Name"
+                    type="text"
+                    name="name"
+                    required
+                  />
                 </div>
-                <div class="more-wrapper">
-                  <div class="more-wrapper">
-                    <button class="project-btn-delete">
-                      <i class="fas fa-trash"></i>
-                    </button>
-                  </div>
+
+                <div class="input-box">
+                  <span class="details">Last Name</span>
+                  <input
+                    type="text"
+                    name="last_name"
+                    placeholder="last name"
+                    required
+                  />
+                </div>
+
+                <div class="input-box">
+                  <span class="details">Sex</span>
+                  <input list="type" name="sex" placeholder="sex" required />
+                  <datalist id="type">
+                    <option>Male</option>
+                    <option>Female</option>
+                    <option>Don't specify</option>
+                  </datalist>
+                </div>
+
+                <div class="input-box">
+                  <span class="details">E-mail</span>
+                  <input
+                    type="email"
+                    name="email"
+                    placeholder="E-mail"
+                    required
+                  />
+                </div>
+
+                <div class="input-box">
+                  <span class="details">Phone</span>
+                  <input
+                    type="tel"
+                    name="telephone"
+                    placeholder="telephone"
+                    required
+                  />
+                </div>
+
+                <div class="input-box">
+                  <span class="details">DNI Cliente</span>
+                  <input
+                    type="number"
+                    name="DNI"
+                    placeholder="DNI Cliente"
+                    required
+                  />
                 </div>
               </div>
-              
-              <h3>Naoufal Elhasyouty</h3>
-              <p>naoufalelhasyouty@gmail.com</p>
-              <div class="social-media">
-                <p><i class="fas fa-phone"></i> +212 708070520</p>
+
+              <div class="button">
+                <input type="submit" value="Save" />
               </div>
-              <div class="days-left" style="color: black">9873497</div>
-            </div>
-          </a>
-          </div>
-          </div>
+            </form>
           </div>
 
           <!--End of Project boxes-->
@@ -329,8 +254,7 @@
       </div>
     </div>
 
-    <script src="/CLIENT/edit-script.js"></script>
-    <script src="/CLIENT/add-new-script.js"></script>
-    <script src="/PROJECTS/projects-app.js"></script>
+    <script src="/popup.js"></script>
+    <script src="/script.js"></script>
   </body>
 </html>

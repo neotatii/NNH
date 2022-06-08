@@ -93,7 +93,7 @@
       </div>
       <div class="app-content">
         <div class="app-sidebar">
-          <a href="" class="app-sidebar-link active">
+          <a href="" class="app-sidebar-link">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               width="24"
@@ -110,7 +110,7 @@
               <polyline points="9 22 9 12 15 12 15 22" />
             </svg>
           </a>
-          <a href="" class="app-sidebar-link">
+          <a href="" class="app-sidebar-link active">
             <svg
               class="link-icon"
               xmlns="http://www.w3.org/2000/svg"
@@ -175,26 +175,13 @@
         <!--Projects section-->
         <div class="projects-section">
           <div class="projects-section-header">
-            <p>MARINA BAI</p>
-
-            <!--Start of Modal-->
-            <div class="modal" id="modal">
-              <div class="modal-header">
-                <!--Modal Header-->
-                <div class="title">New Project</div>
-                <button data-close-button class="close-button">&times;</button>
-              </div>
-
-              <div class="modal-body"></div>
-            </div>
-            <div id="overlay"></div>
+            <p>MARINA BAI <span>#344541</span></p>
           </div>
-
           <!--Start of Project boxes-->
           <div class="project-box-wrapper">
-            <div class="project-box" style="background-color: #a3b18a">
+            <div class="project-box" style="background-color: #64a6a6">
               <div class="project-box-header">
-                <span>Started in 23/05/2023</span>
+                <span>Started in 23/05/2022</span>
                 <div class="days-left" style="color: #344e41">
                   <div class="participants">
                     <img
@@ -202,7 +189,7 @@
                       alt="participant"
                     />
                     <a
-                      href="/"
+                      href="/CLIENT PAGE/Client-page.html"
                       style="text-decoration: none; outline: none; color: black"
                     >
                       &nbsp; &nbsp;Naoufal Elhasyouty</a
@@ -217,6 +204,113 @@
                   Lotissement Mounia, Tetouan.
                 </p>
               </div>
+
+              <div class="content-container">
+                <div class="content">
+                  <div class="modal-header">
+                    <!--Modal Header-->
+                    <div class="title">Devis</div>
+                    <button
+                      data-modal-target="#modal"
+                      id="show-login"
+                      class="add-btn"
+                      title="Add New Project"
+                    >
+                      <svg
+                        class="btn-icon"
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="16"
+                        height="16"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="3"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        class="feather feather-plus"
+                      >
+                        <line x1="12" y1="5" x2="12" y2="19" />
+                        <line x1="5" y1="12" x2="19" y2="12" />
+                      </svg>
+                    </button>
+                    <!--Start of Modal-->
+                    <div class="modal" id="modal">
+                      <div class="modal-header">
+                        <!--Modal Header-->
+                        <div class="title">New Project</div>
+                        <button data-close-button class="close-button">
+                          &times;
+                        </button>
+                      </div>
+
+                      <div class="modal-body">
+                        <!--Modal Body-->
+                        <form action="#">
+                          <div class="user-details">
+                            <div class="input-box">
+                              <span class="details">Type</span>
+                              <input
+                                class="input-box"
+                                placeholder="Tipo de proyecto"
+                                list="type"
+                                name="tipo_proyecto"
+                                required
+                              />
+                              <datalist id="type">
+                                <option>Architecto</option>
+                                <option>Basement</option>
+                                <option>Foundation</option>
+                                <option>Lobby</option>
+                                <option>First Floor</option>
+                                <option>Second Floor</option>
+                                <option>Third Floor</option>
+                                <option>Rooftop</option>
+                              </datalist>
+                            </div>
+
+                            <div class="input-box">
+                              <span class="details">Price</span>
+                              <input
+                                type="number"
+                                name="Price"
+                                placeholder="0.00 MAD"
+                                required
+                              />
+                            </div>
+                          </div>
+
+                          <div class="button">
+                            <input type="submit" value="Save" />
+                          </div>
+                        </form>
+                      </div>
+                    </div>
+                    <div id="overlay"></div>
+                    <!--End of Modal-->
+                  </div>
+                  <form action="#">
+                    <div class="user-details">
+                      <div class="input-box">
+                        <span class="details">Description</span>
+                        <input type="text" placeholder="Fondation" required />
+                      </div>
+                      <div class="input-box">
+                        <span class="details">Price</span>
+                        <input type="number" placeholder="0.00 MAD" required />
+                      </div>
+                      <div class="input-box">
+                        <input class="total" type="submit" value="TOTAL" />
+                      </div>
+                      <div class="input-box">
+                        <input type="number" placeholder="0.00 MAD" required />
+                      </div>
+                    </div>
+                    <div class="button">
+                      <input type="submit" value="Save" />
+                    </div>
+                  </form>
+                </div>
+              </div>
             </div>
           </div>
           <!--End of Project boxes-->
@@ -224,7 +318,7 @@
       </div>
     </div>
 
-    <script src="/popup.js"></script>
+    <script src="/CLIENT/add-new-script.js"></script>
     <script src="/script.js"></script>
   </body>
 </html>
