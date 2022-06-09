@@ -169,8 +169,11 @@
                         </div>
 
                         <div class="button">
-                            <input type="submit" value="Update" name="update"/>
+                            <a href="/clients.php">
+                                <input type="submit" value="Update" name="update"/>
+                            </a>
                         </div>
+                        
                     </form>
                 </div>';
                 include_once("editClient.php");

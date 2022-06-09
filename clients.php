@@ -160,6 +160,7 @@
           </svg>
         </a>
       </div>
+
       <!--Projects section-->
       <div class="projects-section">
         <div class="projects-section-header">
@@ -285,7 +286,7 @@
           </div>
         </div>
 
-        <!--Start of Client boxes-->
+        <!--Start of CLIENT boxes-->
         <div class="project-boxes jsGridView">
           
           <?php 
@@ -314,19 +315,7 @@
                           
                           <div class="project-box-header">
                             
-                            <!--<div class="more-wrapper">  Edit
-                              <div class="more-wrapper">
-                                <form method="post">
-                                  <button data-modal-target="#modal" id="show-login" class="project-btn-delete add-btn">
-                                    <a href="editClient.php?edit=';
-                                      echo $$row['dni']; 
-                                      echo' "><i class="fas fa-edit"></i>
-                                    </a>
-                                  </button>
-                                </form>
-                              </div>
-                            </div>-->
-
+                            
                             <div class="more-wrapper">
                               <div class="more-wrapper">
                                 <a class="edit" href="Edit-client.php?edit='; echo $row['dni']; echo' ">

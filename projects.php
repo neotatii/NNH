@@ -69,7 +69,15 @@
 
         <button class="profile-btn">
           <img src="https://assets.codepen.io/3306515/IMG_2025.jpg" />
-          <span>Fatine M.</span>
+          <span>
+              <?php
+                  include_once("config.php");
+                  include_once("login.php");
+                  $psql = $connec->query("SELECT nombre FROM practica.contratistas WHERE dni = '" . $id_contratista . "';"); 
+                  $total_p = $psql->fetch();
+                  echo $total_p['nombre'];
+            ?>
+          </span>
         </button>
       </div>
       
@@ -382,6 +390,8 @@
             </button>
           </div>
         </div>
+
+        <!--Start of PROJECT boxes-->
         <div class="project-boxes jsGridView">
           
           <?php 
@@ -407,7 +417,9 @@
 
                 echo '<div class="project-box-wrapper">
                         <div class="project-box" style="background-color: #fee4cb">
+
                           <div class="project-box-header">
+
                             <span>'.$row['fecha_inicio'].'</span>
                             <div class="more-wrapper">
                               <form method="post">
@@ -438,7 +450,6 @@
 
                 echo'
                               <a href="/" style="text-decoration: none"> &nbsp; &nbsp;'.$id_cliente['nombre'].'</a>  
-                              <!--<p> '.$id_cliente['nombre'].' </p> -->
                               
                             </div>
                             <div class="days-left" style="color: #ff942e">'.$row['id_proyecto'].'</div>
