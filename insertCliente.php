@@ -17,7 +17,7 @@
         $error = "Ya existe '$existe' en la base de datos.";
     }
     else{
-      $prep = $connec->prepare("INSERT INTO practica.clientes VALUES(:dni,:nombre,:phone,:email,:sexo)");
+      $prep = $connec->prepare("INSERT INTO practica.personas VALUES(:dni, :nombre, :phone, :email)");
 
       $prep->bindParam(":dni",$dni);
       $prep->bindParam(":nombre",$nombre);
@@ -25,6 +25,12 @@
       $prep->bindParam(":email",$email);
       $prep->bindParam(":sexo",$sexo);
       $prep->execute();
+      
+      $prep = $connec->prepare("INSERT INTO practica.clientes VALUES(:sexo, :dni)");
+      $prep->bindParam(":sexo",$sexo);
+      $prep->bindParam(":dni",$dni);
+      $prep->execute();
+
 
       $fila =  $connec->query("SELECT * FROM practica.clientes WHERE dni = '$dni';");
       $id_cliente = $fila->fetch();

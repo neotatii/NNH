@@ -73,7 +73,7 @@
               <?php
                   include_once("config.php");
                   include_once("login.php");
-                  $psql = $connec->query("SELECT nombre FROM practica.contratistas WHERE dni = '" . $id_contratista . "';"); 
+                  $psql = $connec->query("SELECT nombre FROM practica.personas WHERE dni = '" . $id_contratista . "';"); 
                   $total_p = $psql->fetch();
                   echo $total_p['nombre'];
             ?>
@@ -321,12 +321,14 @@
                 <div class="button">
                   <input type="submit" value="Save" name="registrar"/>
                 </div>
+
               </form>
+            
             </div>
           </div>
           <div id="overlay"></div>
           <?php
-  include_once("insertProject.php"); ?>
+            include_once("insertProject.php"); ?>
           <!--End of Modal-->
         </div>
 
@@ -414,48 +416,54 @@
             $psql = "SELECT * FROM practica.proyectos WHERE contratista = '" . $id_contratista . "' ORDER BY fecha_inicio DESC;;";
             
             foreach($connec->query($psql) as $row){
-
-                echo '<div class="project-box-wrapper">
-                        <div class="project-box" style="background-color: #fee4cb">
-
-                          <div class="project-box-header">
-
-                            <span>'.$row['fecha_inicio'].'</span>
-                            <div class="more-wrapper">
-                              <form method="post">
-                                <button type="submit" class="btn-delete" name="delete">
-                                  
-                                    <a class="delete" href="deleteProject.php?delete=';echo $row['id_proyecto']; 
-                                    echo'" 
-                                      > <i class="fas fa-trash"></i> </a>
-                                </button>
-                              </form>
-                            </div>
-                          </div>
-                        
-                          <div class="project-box-content-header">
-                            <p class="box-content-header">'.$row['tipo'].'</p>
-                            <p class="box-content-subheader">'.$row['calle'].', '.$row['ciudad'].' </p>
-                          </div>
-
-                          <div class="project-box-footer">
-                            <div class="participants">
-                              <img
-                                src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=2550&q=80"
-                                alt="participant"
-                              />';
-                              
-                $fila =  $connec->query("SELECT * FROM practica.clientes WHERE dni = '".$row['cliente']."';");
+                $fila =  $connec->query("SELECT * FROM practica.personas WHERE dni = '".$row['cliente']."';");
                 $id_cliente = $fila->fetch();
+                echo '
+                      
+                      
+                        <div class="project-box-wrapper">
+                          
+                          <div class="project-box" style="background-color: #fee4cb">
 
-                echo'
-                              <a href="/" style="text-decoration: none"> &nbsp; &nbsp;'.$id_cliente['nombre'].'</a>  
-                              
+                            <div class="project-box-header">
+
+                              <span>'.$row['fecha_inicio'].'</span>
+                              <div class="more-wrapper">
+                                <form method="post">
+                                  <button type="submit" class="btn-delete" name="delete">
+                                    
+                                      <a class="delete" href="deleteProject.php?delete=';echo $row['id_proyecto']; 
+                                      echo'" 
+                                        > <i class="fas fa-trash"></i> </a>
+                                  </button>
+                                </form>
+                              </div>
                             </div>
-                            <div class="days-left" style="color: #ff942e">'.$row['id_proyecto'].'</div>
+                            <a class="full segiment" href="Hoja-Seguiment.php?edit='; echo $row['id_proyecto']; echo' ">
+                              <div class="project-box-content-header">
+                                <p class="box-content-header">'.$row['tipo'].'</p>
+                                <p class="box-content-subheader">'.$row['calle'].', '.$row['ciudad'].' </p>
+                              </div>
+
+                              <div class="project-box-footer">
+                                <div class="participants">
+                                  <img
+                                    src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=2550&q=80"
+                                    alt="participant"
+                                  />
+
+                                  <a href="/" style="text-decoration: none">
+                                    &nbsp; &nbsp;'.$id_cliente['nombre'].'
+                                  </a>  
+                                  
+                                </div>
+                                <div class="days-left" style="color: #ff942e">'.$row['id_proyecto'].'</div>
+                              </div>
+                            </a>
                           </div>
+                           
                         </div>
-                      </div> 
+                      
                 ';
 
             }     

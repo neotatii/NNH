@@ -100,7 +100,8 @@ a {
      position: relative;
 }
 
-.app-header-left, .app-header-right {
+.app-header-left,
+.app-header-right {
      display: flex;
      align-items: center;
 }
@@ -121,7 +122,8 @@ a {
      position: relative;
 }
 
-.app-icon:before, .app-icon:after {
+.app-icon:before,
+.app-icon:after {
      content: '';
      position: absolute;
      width: 12px;
@@ -314,10 +316,6 @@ a {
      color: var(--main-color);
 }
 
-  .projects-section-header .time {
-       font-size: 20px;
-  }
-
 .projects-status {
      display: flex;
 }
@@ -422,7 +420,7 @@ a {
      flex-wrap: wrap;
 }
 
-.project-boxes.jsGridView .project-box-wrapper .client-box-wrapper {
+.project-boxes.jsGridView .project-box-wrapper {
      width: 33.3%;
 }
 
@@ -521,7 +519,7 @@ a {
      transition: 0.2s;
 }
 
-.btn-delete {
+.project-btn-delete {
      padding: 0;
      width: 30px;
      height: 24px;
@@ -529,6 +527,24 @@ a {
      background-color: transparent;
      border: none;
      color: #111827;
+     /*&:after, &:before {  
+            content: '';  
+            position: absolute;  
+            width: 6px;  
+            height: 6px;  
+            border-radius: 50%;  
+            background-color: var(--main-color);  
+            opacity: .8;  
+            left: 50%;  
+            transform: translatex(-50%);  
+      }  
+       &:before {  
+            top: 0;  
+      }  
+       &:after {  
+            bottom: 0;  
+      }  
+      */
 }
 
 .more-wrapper {
@@ -662,7 +678,7 @@ a {
 }
 
 @media screen and (max-width: 980px) {
-     .project-boxes.jsGridView .project-box-wrapper .client-box-wrapper{
+     .project-boxes.jsGridView .project-box-wrapper {
           width: 50%;
      }
 
@@ -763,7 +779,7 @@ a {
           max-width: 120px;
      }
 
-     .project-boxes.jsGridView .project-box-wrapper .client-box-wrapper {
+     .project-boxes.jsGridView .project-box-wrapper {
           width: 100%;
      }
 
@@ -999,24 +1015,3 @@ form .button input:hover {
      opacity: 1;
      pointer-events: all;
 }
-
-.delete {
-     text-decoration: none;
-     outline: none;
-     color: #000;
-}
-
-.client-box-wrapper a {
-     text-decoration: none;
-     outline: none;
-     color: #111827;
-}
- .client-box-wrapper {
-      padding: 5px;
-      transition: 0.2s;
- }
-
- .Client-name {
-      text-decoration: none;
-      color: black;
- }

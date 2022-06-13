@@ -41,7 +41,7 @@
             $max=10**8;
             $id_proj = rand($min,$max);
 
-            $prep = $connec->prepare("INSERT INTO practica.proyectos VALUES(:id_proyecto,:tipo,:descripcion,:calle,:ciudad,:cp,:pais,:fecha_inicio,:num_plantas,:contratista,:cliente,:arquitecto)");
+            $prep = $connec->prepare("INSERT INTO practica.proyectos VALUES(:id_proyecto,:tipo,:descripcion,:calle,:ciudad,:cp,:pais,:fecha_inicio,:num_plantas,:contratista,:cliente)");
 
             $prep->bindParam(":id_proyecto",$id_proj);
             $prep->bindParam(":tipo",$tipo);
@@ -54,7 +54,12 @@
             $prep->bindParam(":num_plantas",$plantas);
             $prep->bindParam(":contratista",$id_contratista);
             $prep->bindParam(":cliente",$cliente);
+            //$prep->bindParam(":arquitecto",$arquitecto);
+            $prep->execute();
+
+            $prep = $connec->prepare("INSERT INTO practica.proyectistas VALUES(:arquitecto, :proyecto )");
             $prep->bindParam(":arquitecto",$arquitecto);
+            $prep->bindParam(":proyecto",$id_proj);
             $prep->execute();
 
             /*$validar_insert =  $connec->query("SELECT * FROM practica.practicas WHERE id_proyecto = '$id_proj';");

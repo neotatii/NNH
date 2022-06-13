@@ -30,7 +30,7 @@
         header("location: clients.php");
 */
         $cliente = $_GET['edit'];
-        $result = $connec->query("SELECT * FROM practica.clientes WHERE dni = '$cliente'");
+        $result = $connec->query("SELECT a.dni, a.nombre, a.phone, a.emapil, b.sexo FROM practica.personas AS a, practica.clientes AS b WHERE a.dni = '$cliente' AND b.dni = '$cliente'");
         if(count($connec) ==1){
             $row = $result->fetch_array();
             $dni = $row['dni'];

@@ -49,7 +49,7 @@
                         <?php
                             include_once("config.php");
                             include_once("login.php");
-                            $psql = $connec->query("SELECT nombre FROM practica.contratistas WHERE dni = '" . $id_contratista . "';"); 
+                            $psql = $connec->query("SELECT nombre FROM practica.personas WHERE dni = '" . $id_contratista . "';"); 
                             $total_p = $psql->fetch();
                             echo $total_p['nombre'];
                         ?>
@@ -133,7 +133,7 @@
                             <div class="input-box">
                                 <span class="details">Nombre</span>
                                 <input class="input-box" value="';
-                                $psql = $connec->query("SELECT nombre FROM practica.clientes WHERE dni = '" . $client . "';"); 
+                                $psql = $connec->query("SELECT nombre FROM practica.personas WHERE dni = '" . $client . "';"); 
                                 $nombre = $psql->fetch();
                                 echo $nombre['nombre'];
                             echo'" type="text" name="nombre" required />
@@ -142,7 +142,7 @@
                             <div class="input-box">
                                 <span class="details">Número Teléfono</span>
                                 <input type="tel" name="phone" value="';
-                                    $psql = $connec->query("SELECT phone FROM practica.clientes WHERE dni = '" . $client . "';"); 
+                                    $psql = $connec->query("SELECT phone FROM practica.personas WHERE dni = '" . $client . "';"); 
                                     $phone = $psql->fetch();
                                     echo $phone['phone'];
                                 echo'"  required />
@@ -160,7 +160,7 @@
                             <div class="input-box">
                                 <span class="details">E-mail</span>
                                 <input type="email" name="email" value="';
-                                    $psql = $connec->query("SELECT email FROM practica.clientes WHERE dni = '" . $client . "';"); 
+                                    $psql = $connec->query("SELECT email FROM practica.personas WHERE dni = '" . $client . "';"); 
                                     $email = $psql->fetch();
                                     echo $email['email'];
                                 echo'" required />

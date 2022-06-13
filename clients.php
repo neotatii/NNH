@@ -73,7 +73,7 @@
             <?php
                   include_once("config.php");
                   include_once("login.php");
-                  $psql = $connec->query("SELECT nombre FROM practica.contratistas WHERE dni = '" . $id_contratista . "';"); 
+                  $psql = $connec->query("SELECT nombre FROM practica.personas WHERE dni = '" . $id_contratista . "';"); 
                   $total_p = $psql->fetch();
                   echo $total_p['nombre'];
             ?>
@@ -306,7 +306,7 @@
             endif;
             
             
-            $psql = "SELECT * FROM practica.clientes AS c WHERE dni = (SELECT cliente FROM practica.proyectos WHERE contratista = '" . $id_contratista . "' AND cliente = c.dni GROUP BY cliente);"; //
+            $psql = "SELECT * FROM practica.personas AS c WHERE dni = (SELECT cliente FROM practica.proyectos WHERE contratista = '" . $id_contratista . "' AND cliente = c.dni GROUP BY cliente);"; //
             
             foreach($connec->query($psql) as $row){
 
