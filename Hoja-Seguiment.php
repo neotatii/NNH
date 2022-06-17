@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
-    <link rel="stylesheet" href="/PROJECT PAGE/Project-page-style.css" />
+    <link rel="stylesheet" href="Hoja-Seguiment.css" />
 
     <!-- ICONSCOUT CDN -->
     <link
@@ -69,7 +69,15 @@
 
           <button class="profile-btn">
             <img src="https://assets.codepen.io/3306515/IMG_2025.jpg" />
-            <span>Aybüke C.</span>
+            <span>
+                <?php
+                  include_once("config.php");
+                  include_once("login.php");
+                  $psql = $connec->query("SELECT nombre FROM practica.personas WHERE dni = '" . $id_contratista . "';"); 
+                  $total_p = $psql->fetch();
+                  echo $total_p['nombre'];
+                ?>
+            </span>
           </button>
         </div>
         <button class="messages-btn">
@@ -175,13 +183,24 @@
         <!--Projects section-->
         <div class="projects-section">
           <div class="projects-section-header">
-            <p>MARINA BAI <span>#344541</span></p>
+            <?php
+                $prj = $_GET['edit'];
+                echo '<p><span>#'.$prj.'</span></p>
+            
           </div>
           <!--Start of Project boxes-->
           <div class="project-box-wrapper">
             <div class="project-box" style="background-color: #64a6a6">
               <div class="project-box-header">
-                <span>Started in 23/05/2022</span>
+                <span>
+                ';
+                    $psql = $connec->query("SELECT fecha_inicio  FROM practica.proyectos WHERE id_proyecto  = '" . $prj . "';"); 
+                    $total_p = $psql->fetch();
+                    echo 'Started in '.$total_p['fecha_inicio'].'';
+                echo'
+
+                </span>
+            
                 <div class="days-left" style="color: #344e41">
                   <div class="participants">
                     <img
@@ -192,24 +211,43 @@
                       href="/CLIENT PAGE/Client-page.html"
                       style="text-decoration: none; outline: none; color: black"
                     >
-                      &nbsp; &nbsp;Naoufal Elhasyouty</a
+                      &nbsp; &nbsp;';
+                        $psql = $connec->query("SELECT cliente FROM practica.proyectos WHERE id_proyecto  = '" . $prj . "';"); 
+                        $dni_cliente = $psql->fetch();
+
+                        $psql = $connec->query("SELECT nombre FROM practica.personas WHERE dni  = '" . $dni_cliente['cliente'] . "';"); 
+                        $nomre_cliente = $psql->fetch();
+
+                        echo $nomre_cliente['nombre'];
+                        
+                      echo'</a
                     >
-                  </div>
-                  9873497
+                  </div>';echo $dni_cliente['cliente'];
+                  echo'
                 </div>
               </div>
               <div class="project-box-content-header">
-                <p class="box-content-header">Building Construction</p>
-                <p class="box-content-subheader">
-                  Lotissement Mounia, Tetouan.
+                <p class="box-content-header">';
+                    $psql = $connec->query("SELECT tipo  FROM practica.proyectos WHERE id_proyecto  = '" . $prj . "';"); 
+                    $tipo_proy = $psql->fetch();
+                echo'
+                    '.$tipo_proy['tipo'].'
+                </p>
+                <p class="box-content-subheader">';
+                    $psql = $connec->query("SELECT calle FROM practica.proyectos WHERE id_proyecto ='".$prj."';"); 
+                    $calle_proy = $psql->fetch();
+                    $psql = $connec->query("SELECT ciudad  FROM practica.proyectos WHERE id_proyecto ='".$prj."';"); 
+                    $ciudad_proy = $psql->fetch();
+
+                echo'
+                    '.$calle_proy['calle'].', '.$ciudad_proy['ciudad'].'
                 </p>
               </div>
-
               <div class="content-container">
                 <div class="content">
                   <div class="modal-header">
                     <!--Modal Header-->
-                    <div class="title">Devis</div>
+                    <div class="title">Hoja de Seguimiento</div>
                     <button
                       data-modal-target="#modal"
                       id="show-login"
@@ -245,65 +283,89 @@
 
                       <div class="modal-body">
                         <!--Modal Body-->
-                        <form method="post" action="#">
+                        <form action="#">
                           <div class="user-details">
                             <div class="input-box">
-                              <span class="details">Type</span>
+                              <span class="details">Descripción</span>
                               <input
                                 class="input-box"
-                                placeholder="Tipo de proyecto"
+                                placeholder="Descripcion"
                                 list="type"
-                                name="tipo_proyecto"
+                                name="descripcion"
                                 required
                               />
-                              <datalist id="type">
-                                <option>Architecto</option>
-                                <option>Basement</option>
-                                <option>Foundation</option>
-                                <option>Lobby</option>
-                                <option>First Floor</option>
-                                <option>Second Floor</option>
-                                <option>Third Floor</option>
-                                <option>Rooftop</option>
+                              <datalist id="type">';
+                              
+                                include_once("config.php");
+                                $psql = "SELECT nombre FROM practica.descripciones;";
+                                foreach($connec->query($psql) as $row){
+                                    echo'<option>'.$row['nombre'].'</option>';
+                                }
+                              echo'
+    
                               </datalist>
                             </div>
 
                             <div class="input-box">
-                              <span class="details">Price</span>
+                              <span class="details">Precio</span>
                               <input
                                 type="number"
-                                name="Price"
-                                placeholder="0.00 MAD"
+                                step="0.01"
+                                name="precio"
+                                placeholder="0.00 €"
                                 required
                               />
                             </div>
                           </div>
 
                           <div class="button">
-                            <input type="submit" value="Save" />
+                            <input type="submit" value="Save" name="registrar"/>
                           </div>
-                        </form>
+                        </form>';
+                        include_once("insertDescripcion.php");
+                        echo'
+
                       </div>
                     </div>
                     <div id="overlay"></div>
                     <!--End of Modal-->
                   </div>
+                  
                   <form action="#">
                     <div class="user-details">
-                      <div class="input-box">
-                        <span class="details">Description</span>
-                        <input type="text" placeholder="Fondation" required />
+                      
+                    ';
+                        $psql = $connec->query("SELECT id_prosupuesto  FROM practica.prosupuestos WHERE proyecto  = '" . $prj . "';"); 
+                        $prosup = $psql->fetch();
+                        //echo'
+                          //  '.$tipo_proy['tipo'].'
+
+                        $psql = "SELECT nombre, precio FROM practica.precios WHERE presupuesto = ".$prosup['id_prosupuesto'].";"; //
+                        foreach($connec->query($psql) as $row){
+                        echo'
+                        <div class="input-box">
+                        <span class="details">Description
+                        
+                        </span>
+                        <input type="text" placeholder="Fondation" value="'.$row['nombre'].'" required />
                       </div>
                       <div class="input-box">
                         <span class="details">Price</span>
-                        <input type="number" placeholder="0.00 MAD" required />
+                        <input type="number" placeholder="0.00 MAD" value="'.$row['precio'].'" required />
                       </div>
+
+                    ';
+                        }
+                    echo'
                       <div class="input-box">
                         <input class="total" type="submit" value="TOTAL" />
                       </div>
                       <div class="input-box">
-                        <input type="number" placeholder="0.00 MAD" required />
-                      </div>
+                        <input placeholder="0.00 MAD"value="';
+                            $psql = $connec->query("SELECT SUM(precio) FROM practica.precios WHERE presupuesto = '".$prosup['id_prosupuesto']."';"); 
+                            $suma = $psql->fetch();
+                        echo''.$suma['sum'].'" required />
+                      </div>'?>
                     </div>
                     <div class="button">
                       <input type="submit" value="Save" />
@@ -318,7 +380,7 @@
       </div>
     </div>
 
-    <script src="/CLIENT/add-new-script.js"></script>
+    <script src="/popup.js"></script>
     <script src="/script.js"></script>
   </body>
 </html>
