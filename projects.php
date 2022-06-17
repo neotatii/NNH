@@ -315,7 +315,7 @@
                   </div>
 
                   <div class="input-box">
-                    <span class="details">Description</span>
+                    <span class="details">Descripcion</span>
                     <textarea rows="4" cols="88" required name="descripcion"></textarea>
                   </div>
                 </div>
@@ -415,7 +415,7 @@
 
               
             endif;
-            
+
             session_start();
             $id_contratista = $_SESSION['id_contratista'];
             
@@ -434,15 +434,28 @@
                             <div class="project-box-header">
 
                               <span>'.$row['fecha_inicio'].'</span>
+
                               <div class="more-wrapper">
-                                <form method="post">
-                                  <button type="submit" class="btn-delete" name="delete">
-                                    
-                                      <a class="delete" href="deleteProject.php?delete=';echo $row['id_proyecto']; 
-                                      echo'" 
-                                        > <i class="fas fa-trash"></i> </a>
-                                  </button>
-                                </form>
+                                <div class="more-wrapper">
+                                  <a class="edit" href="Edit-Project.php?edit='; echo $row['id_proyecto']; echo' ">
+                                    <button id="show-login" class="project-btn-delete add-btn">
+                                        <i class="fas fa-edit"></i>
+                                    </button>
+                                  </a>
+                                </div>
+                              </div>
+
+                              <div class="more-wrapper">
+                                <div class="more-wrapper">
+                                  <form method="post">
+                                    <button type="submit" class="project-btn-delete" name="delete">
+                                      
+                                        <a class="delete" href="deleteProject.php?delete=';echo $row['id_proyecto']; 
+                                        echo'" 
+                                          > <i class="fas fa-trash"></i> </a>
+                                    </button>
+                                  </form>
+                                </div>
                               </div>
                             </div>
                             <a class="full segiment" href="Hoja-Seguiment.php?edit='; echo $row['id_proyecto']; echo' ">

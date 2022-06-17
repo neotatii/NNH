@@ -113,18 +113,27 @@
                     <p>
                         <?php
                             include_once("config.php");
+                            
 
                             $client = $_GET['edit'];
-                            echo 'Edit client: '.$client;
+                            $psql = $connec->query("SELECT cliente FROM practica.proyectos WHERE id_proyecto = '" . $client . "';"); 
+                            $dni = $psql->fetch();
+                            $dni = $dni['cliente'];
+
+                            $psql = $connec->query("SELECT nombre FROM practica.personas WHERE dni = '" . $dni . "';"); 
+                            $cl = $psql->fetch();
+                            $cl = $cl['nombre'];
+
+                            echo 'Editar proyecto: #'.$client;
+                            echo "<br>";
+                            echo 'Cliente: '.$cl;
 
                             
                             if(isset($_SESSION['message'])):
                                 echo '<div class="alert alert-'.$_SESSION['msg_type'].'">';
                                 echo $_SESSION['message'];
-                                unset($_SESSION['message']); 
-                                header("location: clients.php");                  
+                                unset($_SESSION['message']);                    
                             endif;
-
                             echo'
                         
                     </p>
@@ -135,39 +144,75 @@
                         <div class="user-details">
                             
                             <div class="input-box">
-                                <span class="details">Nombre</span>
+                                <span class="details">Tipo</span>
                                 <input class="input-box" value="';
-                                $psql = $connec->query("SELECT nombre FROM practica.personas WHERE dni = '" . $client . "';"); 
+                                $psql = $connec->query("SELECT tipo FROM practica.proyectos WHERE id_proyecto = '" . $client . "';"); 
                                 $nombre = $psql->fetch();
-                                echo $nombre['nombre'];
-                            echo'" type="text" name="nombre" required />
+                                echo $nombre['tipo'];
+                            echo'" type="text" name="tipo" required />
                             </div>
 
                             <div class="input-box">
-                                <span class="details">Número Teléfono</span>
-                                <input type="tel" name="phone" value="';
-                                    $psql = $connec->query("SELECT phone FROM practica.personas WHERE dni = '" . $client . "';"); 
+                                <span class="details">Calle</span>
+                                <input type="text" name="calle" value="';
+                                    $psql = $connec->query("SELECT calle FROM practica.proyectos WHERE id_proyecto = '" . $client . "';");
                                     $phone = $psql->fetch();
-                                    echo $phone['phone'];
+                                    echo $phone['calle'];
                                 echo'"  required />
                             </div>
                             <div class="input-box">
-                                <span class="details">Sexo (male/female)</span>
-                                <input list="type" name="sexo" value="';
-                                    $psql = $connec->query("SELECT sexo FROM practica.clientes WHERE dni = '" . $client . "';"); 
+                                <span class="details">Ciudad</span>
+                                <input type="text" name="ciudad" value="';
+                                    $psql = $connec->query("SELECT ciudad FROM practica.proyectos WHERE id_proyecto = '" . $client . "';"); 
                                     $sexo = $psql->fetch();
-                                    echo $sexo['sexo'];
+                                    echo $sexo['ciudad'];
                                 echo'"  required />
                                 
                             </div>
 
                             <div class="input-box">
-                                <span class="details">E-mail</span>
-                                <input type="email" name="email" value="';
-                                    $psql = $connec->query("SELECT email FROM practica.personas WHERE dni = '" . $client . "';"); 
+                                <span class="details">Codigo Postal</span>
+                                <input type="text" name="cp" value="';
+                                    $psql = $connec->query("SELECT cp FROM practica.proyectos WHERE id_proyecto = '" . $client . "';"); 
                                     $email = $psql->fetch();
-                                    echo $email['email'];
+                                    echo $email['cp'];
                                 echo'" required />
+                            </div>
+
+                            <div class="input-box">
+                                <span class="details">Pais</span>
+                                <input type="text" name="pais" value="';
+                                    $psql = $connec->query("SELECT pais FROM practica.proyectos WHERE id_proyecto = '" . $client . "';"); 
+                                    $email = $psql->fetch();
+                                    echo $email['pais'];
+                                echo'" required />
+                            </div>
+
+                            <div class="input-box">
+                                <span class="details">Fecha Inicio</span>
+                                <input type="date" name="fecha_inicio" value="';
+                                    $psql = $connec->query("SELECT fecha_inicio FROM practica.proyectos WHERE id_proyecto = '" . $client . "';"); 
+                                    $email = $psql->fetch();
+                                    echo $email['fecha_inicio'];
+                                echo'" required />
+                            </div>
+
+                            <div class="input-box">
+                                <span class="details">Numero Plantas</span>
+                                <input type="number" name="num_plantas" value="';
+                                    $psql = $connec->query("SELECT num_plantas FROM practica.proyectos WHERE id_proyecto = '" . $client . "';"); 
+                                    $email = $psql->fetch();
+                                    echo $email['num_plantas'];
+                                echo'" required />
+                            </div>
+
+                            <div class="input-box">
+                                <span class="details">Descripcion</span>
+                                <textarea rows="4" cols="73" required name="descripcion" >';
+                                    $psql = $connec->query("SELECT descripcion FROM practica.proyectos WHERE id_proyecto = '" . $client . "';"); 
+                                    $email = $psql->fetch();
+                                    echo $email['descripcion'];
+                                echo' </textarea>
                             </div>
 
                         </div>
@@ -180,7 +225,10 @@
                         
                     </form>
                 </div>';
-                include_once("editClient.php");
+                include_once("editProject.php");
+                if($_POST['update']){
+                    header("location: projects.php");
+                }
                 echo'
                 
 
