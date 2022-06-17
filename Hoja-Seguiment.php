@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
-    <link rel="stylesheet" href="Hoja-Seguiment.css" />
+    <link rel="stylesheet" href="/Hoja-Seguiment.css" />
 
     <!-- ICONSCOUT CDN -->
     <link
@@ -80,28 +80,11 @@
             </span>
           </button>
         </div>
-        <button class="messages-btn">
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            width="20"
-            height="20"
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="currentColor"
-            stroke-width="2"
-            stroke-linecap="round"
-            stroke-linejoin="round"
-            class="feather feather-message-circle"
-          >
-            <path
-              d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"
-            />
-          </svg>
-        </button>
+        
       </div>
       <div class="app-content">
         <div class="app-sidebar">
-          <a href="" class="app-sidebar-link">
+          <a href="/projects.php" class="app-sidebar-link active">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               width="24"
@@ -118,7 +101,7 @@
               <polyline points="9 22 9 12 15 12 15 22" />
             </svg>
           </a>
-          <a href="" class="app-sidebar-link active">
+          <a href="/clients.php" class="app-sidebar-link">
             <svg
               class="link-icon"
               xmlns="http://www.w3.org/2000/svg"
@@ -133,9 +116,7 @@
               viewBox="0 0 24 24"
             >
               <defs />
-              <path
-                d="M21.21 15.89A10 10 0 118 2.83M22 12A10 10 0 0012 2v10z"
-              />
+              <path d="M21.21 15.89A10 10 0 118 2.83M22 12A10 10 0 0012 2v10z" />
             </svg>
           </a>
           <a href="" class="app-sidebar-link">
@@ -184,6 +165,7 @@
         <div class="projects-section">
           <div class="projects-section-header">
             <?php
+                include_once("config.php");
                 $prj = $_GET['edit'];
                 echo '<p><span>#'.$prj.'</span></p>
             
@@ -194,9 +176,9 @@
               <div class="project-box-header">
                 <span>
                 ';
-                    $psql = $connec->query("SELECT fecha_inicio  FROM practica.proyectos WHERE id_proyecto  = '" . $prj . "';"); 
-                    $total_p = $psql->fetch();
-                    echo 'Started in '.$total_p['fecha_inicio'].'';
+                    $fila = $connec->query("SELECT fecha_inicio  FROM practica.proyectos WHERE id_proyecto  = '" . $prj . "';"); 
+                    $fecha_ini = $fila->fetch();
+                    echo 'Started in '.$fecha_ini['fecha_inicio'].'';
                 echo'
 
                 </span>
@@ -208,7 +190,7 @@
                       alt="participant"
                     />
                     <a
-                      href="/CLIENT PAGE/Client-page.html"
+                      href=Clients.php"
                       style="text-decoration: none; outline: none; color: black"
                     >
                       &nbsp; &nbsp;';
@@ -241,7 +223,9 @@
 
                 echo'
                     '.$calle_proy['calle'].', '.$ciudad_proy['ciudad'].'
-                </p>
+                
+                </p>';
+                ?>
               </div>
               <div class="content-container">
                 <div class="content">
@@ -252,7 +236,7 @@
                       data-modal-target="#modal"
                       id="show-login"
                       class="add-btn"
-                      title="Add New Project"
+                      title="Añadir nueva Descripcion"
                     >
                       <svg
                         class="btn-icon"
@@ -275,7 +259,7 @@
                     <div class="modal" id="modal">
                       <div class="modal-header">
                         <!--Modal Header-->
-                        <div class="title">New Project</div>
+                        <div class="title">Nueva descripción</div>
                         <button data-close-button class="close-button">
                           &times;
                         </button>
@@ -283,7 +267,7 @@
 
                       <div class="modal-body">
                         <!--Modal Body-->
-                        <form action="#">
+                        <form action="#" method="POST">
                           <div class="user-details">
                             <div class="input-box">
                               <span class="details">Descripción</span>
@@ -295,13 +279,13 @@
                                 required
                               />
                               <datalist id="type">';
-                              
+                              <?php
                                 include_once("config.php");
                                 $psql = "SELECT nombre FROM practica.descripciones;";
                                 foreach($connec->query($psql) as $row){
                                     echo'<option>'.$row['nombre'].'</option>';
                                 }
-                              echo'
+                              ?>
     
                               </datalist>
                             </div>
@@ -309,8 +293,6 @@
                             <div class="input-box">
                               <span class="details">Precio</span>
                               <input
-                                type="number"
-                                step="0.01"
                                 name="precio"
                                 placeholder="0.00 €"
                                 required
@@ -319,32 +301,36 @@
                           </div>
 
                           <div class="button">
-                            <input type="submit" value="Save" name="registrar"/>
+                            <a href = "/clients.php">
+                              <input type="submit" value="Save" name="registrar"/>
+                            </a>
+                            
                           </div>
-                        </form>';
-                        include_once("insertDescripcion.php");
-                        echo'
+                        </form>
 
                       </div>
                     </div>
+                    
                     <div id="overlay"></div>
+                    <?php
+                      include_once("insertDescripcion.php");?>
+                   
                     <!--End of Modal-->
                   </div>
                   
-                  <form action="#">
+                  <form action="#" method="post">
                     <div class="user-details">
                       
-                    ';
+                    <?php
                         $psql = $connec->query("SELECT id_prosupuesto  FROM practica.prosupuestos WHERE proyecto  = '" . $prj . "';"); 
                         $prosup = $psql->fetch();
-                        //echo'
-                          //  '.$tipo_proy['tipo'].'
+                        
 
                         $psql = "SELECT nombre, precio FROM practica.precios WHERE presupuesto = ".$prosup['id_prosupuesto'].";"; //
                         foreach($connec->query($psql) as $row){
                         echo'
                         <div class="input-box">
-                        <span class="details">Description
+                        <span class="details">Descripcion
                         
                         </span>
                         <input type="text" placeholder="Fondation" value="'.$row['nombre'].'" required />
@@ -368,9 +354,10 @@
                       </div>'?>
                     </div>
                     <div class="button">
-                      <input type="submit" value="Save" />
+                      <input type="submit" value="Save" name="editar"/>
                     </div>
                   </form>
+
                 </div>
               </div>
             </div>
