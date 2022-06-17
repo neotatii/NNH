@@ -73,6 +73,8 @@
                 <?php
                   include_once("config.php");
                   include_once("login.php");
+                  session_start();
+                  $id_contratista = $_SESSION['id_contratista'];
                   $psql = $connec->query("SELECT nombre FROM practica.personas WHERE dni = '" . $id_contratista . "';"); 
                   $total_p = $psql->fetch();
                   echo $total_p['nombre'];
@@ -333,14 +335,16 @@
                         <span class="details">Descripcion
                         
                         </span>
-                        <input type="text" placeholder="Fondation" value="'.$row['nombre'].'" required />
+                        <input name ="nombre" type="text" placeholder="Fondation" value="'.$row['nombre'].'" required />
                       </div>
                       <div class="input-box">
                         <span class="details">Price</span>
-                        <input type="number" placeholder="0.00 MAD" value="'.$row['precio'].'" required />
+                        <input name ="precio" type="number" placeholder="0.00 MAD" value="'.$row['precio'].'" required />
                       </div>
 
                     ';
+                   
+                      include_once("editarHoja-Seguimiento.php");
                         }
                     echo'
                       <div class="input-box">
@@ -360,6 +364,7 @@
 
                 </div>
               </div>
+              
             </div>
           </div>
           <!--End of Project boxes-->

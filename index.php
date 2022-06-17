@@ -52,15 +52,36 @@
           </div>
           <div class="form">
             <h2>Login Here</h2>
-            <input type="email" name="email" placeholder="Enter your email here">
-            <input type="password" name="email" placeholder="Enter your password here">
-            <button class="btn"><a href="/projects.php">Login</a>
-            </button>
+            <p style="background-color:tomato;">
+              <?php
+                include_once("login.php");
+                echo $error;
+              ?>
+            </p>
+            <p style="background-color:tomato;">
+              <?php
+                include_once("login.php");
+                echo $success;
+              ?>
+            </p>
+            <form action="#" method="POST">
+              <input type="email" name="email" placeholder="Enter your email here">
+              <input type="password" name="password" placeholder="Enter your password here">
+              <!--<button class="btn">
+                <a href="/projects.php">Login</a> 
+                <input type="submit" value="Login" name="registrar"/>
+              </button>-->
+              <div class="button">
+                <input type="submit" value="Save" name="registrar"/>
+              </div>
+            </form>
             <p class="link">Don't have an accout ?<br>
             <a href="/Sign up page.html">Sing up here</a></p>
           </div>
         </div>
       </div>
+      <?php
+            include_once("login.php"); ?>
     </section>
 
     <!-- Services Section -->

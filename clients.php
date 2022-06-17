@@ -73,6 +73,8 @@
             <?php
                   include_once("config.php");
                   include_once("login.php");
+                  session_start();
+                  $id_contratista = $_SESSION['id_contratista'];
                   $psql = $connec->query("SELECT nombre FROM practica.personas WHERE dni = '" . $id_contratista . "';"); 
                   $total_p = $psql->fetch();
                   echo $total_p['nombre'];
@@ -275,6 +277,8 @@
                 <?php
                   include_once("config.php");
                   include_once("login.php");
+                  session_start();
+                  $id_contratista = $_SESSION['id_contratista'];
                   $psql = $connec->query("SELECT DISTINCT count( DISTINCT cliente) FROM practica.proyectos WHERE contratista = '" . $id_contratista . "';"); 
                   $total_p = $psql->fetch();
                   echo $total_p['count'];
@@ -305,7 +309,8 @@
               
             endif;
             
-            
+            session_start();
+            $id_contratista = $_SESSION['id_contratista'];
             $psql = "SELECT * FROM practica.personas AS c WHERE dni = (SELECT cliente FROM practica.proyectos WHERE contratista = '" . $id_contratista . "' AND cliente = c.dni GROUP BY cliente);"; //
             
             foreach($connec->query($psql) as $row){

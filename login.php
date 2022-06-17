@@ -1,24 +1,38 @@
 <?php
-    $id_contratista = '65529157H';
+    include_once("config.php");
+    session_start();
 
    
-    $email = $_POST['email'];
-    $password = $_POST['password'];
-    $error = "";
-    $success = "";
-    if(isset($_POST['login'])){
-        if($email == "admin@admin.com"){
-            if($password == "admin"){
-                $error = "";
-                $success = "Welcome Admin!!!";
+    if($_POST['registrar']){
+        $email = $_POST['email'];
+        $password = $_POST['password'];
+        $error = "";
+        $success = "";
+
+        $psql = $connec->query("SELECT count(*) FROM practica.personas WHERE email = '" . $email . "' AND dni IN (SELECT dni FROM practica.contratistas);"); //
+        $validar_email = $psql->fetch();
+        
+        if($validar_email['count'] != 0){
+            
+            $psql = $connec->query("SELECT count(*) FROM practica.contratistas WHERE contraseña = '".$password."' AND dni = (SELECT dni FROM practica.personas WHERE email = '" . $email . "');"); //
+            $validar_pass = $psql->fetch();
+            
+            if($validar_pass['count'] != 0){
+                $psql = $connec->query("SELECT dni FROM practica.contratistas WHERE contraseña = '".$password."';"); //
+                $get_dni = $psql->fetch();
+                $id_contratista = $get_dni['dni'];
+                
+                $_SESSION['id_contratista'] = $id_contratista;
+
+                header("location: projects.php");
             }
             else{
-                $error = "Invalid Password";
+                $error = "Contraseña Invalida";
                 $success = "";
             }
         }
         else{
-            $error = "Invalid Email";
+            $error = "Email Invalido";
             $success = "";
         }
     }

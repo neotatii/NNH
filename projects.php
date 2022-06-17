@@ -73,6 +73,8 @@
               <?php
                   include_once("config.php");
                   include_once("login.php");
+                  session_start();
+                  $id_contratista = $_SESSION['id_contratista'];
                   $psql = $connec->query("SELECT nombre FROM practica.personas WHERE dni = '" . $id_contratista . "';"); 
                   $total_p = $psql->fetch();
                   echo $total_p['nombre'];
@@ -340,6 +342,8 @@
                 <?php
                   include_once("config.php");
                   include_once("login.php");
+                  session_start();
+                  $id_contratista = $_SESSION['id_contratista'];
                   $psql = $connec->query("SELECT count(*) FROM practica.proyectos WHERE contratista = '" . $id_contratista . "';"); //
                   $total_p = $psql->fetch();
                   echo $total_p['count'];
@@ -412,6 +416,8 @@
               
             endif;
             
+            session_start();
+            $id_contratista = $_SESSION['id_contratista'];
             
             $psql = "SELECT * FROM practica.proyectos WHERE contratista = '" . $id_contratista . "' ORDER BY fecha_inicio DESC;;";
             
