@@ -227,13 +227,43 @@
                     '.$calle_proy['calle'].', '.$ciudad_proy['ciudad'].'
                 
                 </p>';
+
+                
+
                 ?>
+
               </div>
+
+              <?php
+                include_once("config.php"); 
+                include_once("login.php");
+                include_once("deleteHoja-Seguimiento.php");
+                if(isset($_SESSION['message'])):
+                  echo '<div class="alert alert-'.$_SESSION['msg_type'].'">';
+                  echo $_SESSION['message'];
+                  unset($_SESSION['message']);
+
+                  echo'</div>';
+
+                  
+                endif;
+              ?>
               <div class="content-container">
                 <div class="content">
                   <div class="modal-header">
                     <!--Modal Header-->
                     <div class="title">Hoja de Seguimiento</div>
+                    <form method="post">
+                      <button type="submit" class="project-btn-delete" name="delete">
+                        
+                          <a class="delete" href="deleteHoja-Seguimiento.php?delete=<?php
+                            echo $_GET['edit'];
+                          ?>"> 
+                            <i class="fas fa-trash"></i> 
+                          </a>
+                      </button>
+                    </form>
+
                     <button
                       data-modal-target="#modal"
                       id="show-login"
@@ -324,6 +354,9 @@
                     <div class="user-details">
                       
                     <?php
+                      $psql = $connec->query("SELECT count(*) FROM practica.prosupuestos WHERE proyecto  = '" . $prj . "';"); 
+                      $prosup = $psql->fetch();
+                      if($prosup['count'] != 0){
                         $psql = $connec->query("SELECT id_prosupuesto  FROM practica.prosupuestos WHERE proyecto  = '" . $prj . "';"); 
                         $prosup = $psql->fetch();
                         
@@ -338,8 +371,8 @@
                         <input name ="nombre" type="text" placeholder="Fondation" value="'.$row['nombre'].'" required />
                       </div>
                       <div class="input-box">
-                        <span class="details">Price</span>
-                        <input name ="precio" type="number" placeholder="0.00 MAD" value="'.$row['precio'].'" required />
+                        <span class="details">Precio</span>
+                        <input name ="precio" placeholder="0.00 MAD" value="'.$row['precio'].'" required />
                       </div>
 
                     ';
@@ -355,7 +388,9 @@
                             $psql = $connec->query("SELECT SUM(precio) FROM practica.precios WHERE presupuesto = '".$prosup['id_prosupuesto']."';"); 
                             $suma = $psql->fetch();
                         echo''.$suma['sum'].'" required />
-                      </div>'?>
+                      </div>';
+                      }
+                    ?>
                     </div>
                     <div class="button">
                       <input type="submit" value="Save" name="editar"/>

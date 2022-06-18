@@ -1,12 +1,29 @@
 <?php
 
   include_once("config.php");
+  date_default_timezone_set('Europe/London');
 
   if($_POST['registrar']){
     
     $descripcion = $_POST['descripcion'];
     $precio = $_POST['precio'];
     $prj = $_GET['edit'];
+
+    $psql = $connec->query("SELECT count(*)  FROM practica.prosupuestos WHERE proyecto  = '" . $prj . "';"); 
+    $prosup = $psql->fetch();
+    if($prosup['count'] == 0){
+        $fecha = date('Y-m-d H:i:s');
+        $min=1;
+        $max=10**9;
+        $id_prosupuesto = rand($min,$max);
+
+        $prep = $connec->prepare("INSERT INTO practica.prosupuestos VALUES(:id_prosupuesto, :fecha, :proyecto)");
+
+        $prep->bindParam(":id_prosupuesto",$id_prosupuesto);
+        $prep->bindParam(":fecha",$fecha);
+        $prep->bindParam(":proyecto",$prj);
+        $prep->execute();
+    }
     
     $error = "¡¡Se ha añadido la descripción correctamente!!";
     

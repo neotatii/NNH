@@ -10,8 +10,7 @@
     $nombre = $_POST['nombre'];
     $preu = $_POST['precio'];
 
-    echo $nombre;
-    echo $preu;
+    
         
     
 
