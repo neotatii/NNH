@@ -58,7 +58,7 @@
 
 #logo {
     margin-right: 0.5rem;
-    width: 60px;
+    width: 50px;
     padding: 5px;
 }
 
@@ -312,27 +312,29 @@
 .form {
     width: 400px;
     height: 350px;
-    background-image: linear-gradient(to top, #f77162ca 0%, #fe5196c3 100%);
-    position: relative;
+    background-image:  rgba(255,255,255,0.13);
+    position:relative;
     top: 0px;
     left: 100px;
-    transform: translate(0%, -5%);
+    transform: translate(0%,-5%);
     border-radius: 10px;
+    border: 2px solid rgba(255,255,255,0.1);
+    box-shadow: 0 0 40px rgba(8,7,16,0.6);
     text-align: center;
     align-items: center;
     justify-content: center;
     padding: 25px;
+    backdrop-filter: blur(10px);
 }
 
 .form h2 {
     text-align: center;
     font-size: 30px;
     color: #ffffff;
-    background-color: #78afaf;
+    background-color: transparent;
     border-radius: 5px;
     margin: 2px;
     padding: 8px;
-
 }
 
 .form input {
@@ -355,37 +357,18 @@
     color: #f4faff;
 }
 
-.btn {
+.form .btn {
     width: 200px;
     height: 30px;
     margin-top: 30px;
     font-size: 16px;
-    background: #4837ff;
+    background: #6437b2;
     border: none;
     border-radius: 5px;
     color: #f4faff;
     cursor: pointer;
     transition: all 0.5s;
     position: relative;
-}
-
-.btn a {
-    text-decoration: none;
-    color: #f4faff;
-    z-index: 2;
-    position: relative;
-}
-
-.btn:after {
-    position: absolute;
-    content: "";
-    top: 0;
-    left: 0;
-    width: 0;
-    height: 100%;
-    background: #42896a;
-    transition: all 0.5s;
-    border-radius: 4px;
 }
 
 .btn:hover {
@@ -400,11 +383,12 @@
     font-size: 16px;
     margin-top: 10px;
     margin-bottom: 10px;
+    color: #fff;
 }
 
 .link a {
     text-decoration: none;
-    color: #4837ff;
+    color: #fff;
 }
 
 /* Mobile Responsive */

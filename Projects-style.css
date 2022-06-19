@@ -870,6 +870,7 @@ a {
     max-width: 700px;
     padding: 25px 30px;
     box-shadow: 0 5px 10px rgba(0, 0, 0, 0.15);
+    overflow: scroll;
 }
 
 .modal.active {
