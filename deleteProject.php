@@ -3,7 +3,6 @@
     include_once("login.php");
 
     session_start();
-
     if(isset($_GET['delete'])){
         $proyecto = $_GET['delete'];
         $connec->query("DELETE FROM practica.proyectos WHERE id_proyecto = '$proyecto'");

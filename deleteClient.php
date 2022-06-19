@@ -13,6 +13,7 @@
     if(isset($_GET['delete'])){
         $cliente = $_GET['delete'];
         $connec->query("DELETE FROM practica.clientes WHERE dni = '$cliente'");
+        $connec->query("DELETE FROM practica.personas WHERE dni = '$cliente'");
         
         $_SESSION['message'] = "Se ha borrado el Cliente $cliente !";
         $_SESSION['msg_type'] = "eliminado";
