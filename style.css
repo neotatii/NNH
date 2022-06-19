@@ -5,14 +5,14 @@
   font-family: "Kumbh Sans", sans-serif;
 }
 
-.header{
+.header {
   min-height: 100vh;
   width: 100%;
-  background-image: linear-gradient(rgba(4,9,30,0.7),rgba(4,9,30,0.7)), url(img/BG-CONSTRUCTION.jpg);
+  background-image: linear-gradient(rgba(4, 9, 30, 0.7), rgba(4, 9, 30, 0.7)), url(img/BG-CONSTRUCTION.jpg);
   background-position: center;
   background-size: cover;
   position: relative;
-  }
+}
 
 .navbar {
   background: transparent;
@@ -24,7 +24,7 @@
   position: relative;
   top: 0;
   z-index: 999;
-  
+
 }
 
 .navbar__container {
@@ -58,7 +58,7 @@
 
 #logo {
   margin-right: 0.5rem;
-  width: 60px;
+  width: 50px;
   padding: 5px;
 }
 
@@ -67,7 +67,7 @@
   align-items: center;
   list-style: none;
   text-align: center;
-  
+
 }
 
 .navbar__item {
@@ -75,7 +75,8 @@
 }
 
 .navbar__links {
-  color:#fff;;
+  color: #fff;
+  ;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -308,33 +309,35 @@
   width: 100%;
 }
 
-.form{
+.form {
   width: 400px;
   height: 350px;
-  background-image: linear-gradient(to top, #f77162ca 0%, #fe5196c3 100%);
-  position:relative;
+  background-image: rgba(255, 255, 255, 0.13);
+  position: relative;
   top: 0px;
   left: 100px;
-  transform: translate(0%,-5%);
+  transform: translate(0%, -5%);
   border-radius: 10px;
+  border: 2px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 0 40px rgba(8, 7, 16, 0.6);
   text-align: center;
   align-items: center;
   justify-content: center;
   padding: 25px;
+  backdrop-filter: blur(10px);
 }
 
-.form h2{
+.form h2 {
   text-align: center;
   font-size: 30px;
   color: #ffffff;
-  background-color: #78afaf;
+  background-color: transparent;
   border-radius: 5px;
   margin: 2px;
   padding: 8px;
-
 }
 
-.form input{
+.form input {
   width: 240px;
   height: 30px;
   margin-top: 30px;
@@ -346,20 +349,20 @@
   font-size: 15px;
 }
 
-.form input:focus{
+.form input:focus {
   outline: none;
 }
 
-::placeholder{
+::placeholder {
   color: #f4faff;
 }
 
-.btn{
+.form .btn {
   width: 200px;
   height: 30px;
   margin-top: 30px;
   font-size: 16px;
-  background: #4837ff;
+  background: #6437b2;
   border: none;
   border-radius: 5px;
   color: #f4faff;
@@ -368,42 +371,24 @@
   position: relative;
 }
 
-.btn a {
-  text-decoration: none;
-  color: #f4faff;
-  z-index: 2;
-  position: relative;
-}
-
-.btn:after {
-  position: absolute;
-  content: "";
-  top: 0;
-  left: 0;
-  width: 0;
-  height: 100%;
-  background: #42896a;
-  transition: all 0.5s;
-  border-radius: 4px;
-}
-
-.btn:hover{
+.btn:hover {
   color: #4837ff;
 }
 
-.btn:hover:after{
+.btn:hover:after {
   width: 100%;
 }
 
-.link{
+.link {
   font-size: 16px;
   margin-top: 10px;
   margin-bottom: 10px;
+  color: #fff;
 }
 
-.link a{
+.link a {
   text-decoration: none;
-  color: #4837ff;
+  color: #fff;
 }
 
 /* Mobile Responsive */
@@ -471,15 +456,13 @@
 
 .services h1 {
   background-color: #ff8177;
-  background-image: linear-gradient(
-    to right,
-    #ff8177 0%,
-    #ff867a 0%,
-    #ff8c7f 21%,
-    #f99185 52%,
-    #cf556c 78%,
-    #b12a5b 100%
-  );
+  background-image: linear-gradient(to right,
+      #ff8177 0%,
+      #ff867a 0%,
+      #ff8c7f 21%,
+      #f99185 52%,
+      #cf556c 78%,
+      #b12a5b 100%);
   background-size: 100%;
   -webkit-background-clip: text;
   background-clip: text;
@@ -500,11 +483,9 @@
   height: 525px;
   width: 400px;
   border-radius: 4px;
-  background-image: linear-gradient(
-      to bottom,
+  background-image: linear-gradient(to bottom,
       rgba(0, 0, 0, 0) 0%,
-      rgba(17, 17, 17, 0.6) 100%
-    ),
+      rgba(17, 17, 17, 0.6) 100%),
     url("img/pic8.jpg");
   background-size: cover;
   position: relative;
@@ -516,11 +497,9 @@
 }
 
 .services__card:nth-child(2) {
-  background-image: linear-gradient(
-      to bottom,
+  background-image: linear-gradient(to bottom,
       rgba(0, 0, 0, 0) 0%,
-      rgba(17, 17, 17, 0.9) 100%
-    ),
+      rgba(17, 17, 17, 0.9) 100%),
     url("img/pic6.jpg");
 }
 
@@ -628,7 +607,7 @@
   margin-bottom: 16px;
 }
 
-.footer__link--items > h2 {
+.footer__link--items>h2 {
   color: #141414;
 }
 
@@ -715,4 +694,3 @@
     width: 100%;
   }
 }
-
