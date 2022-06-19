@@ -868,9 +868,8 @@ a {
     background-color: white;
     width: 100%;
     max-width: 700px;
-    padding: 25px 30px;
+    padding: 15px 30px;
     box-shadow: 0 5px 10px rgba(0, 0, 0, 0.15);
-    overflow: scroll;
 }
 
 .modal.active {
@@ -915,7 +914,7 @@ a {
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
-    margin: 20px 0 12px 0;
+    margin: 15px 0 12px 0;
 }
 
 form .user-details .input-box {
@@ -948,7 +947,7 @@ form .input-box span.details {
 
 form .button {
     height: 45px;
-    margin: 35px 0
+    margin: 15px 0
 }
 
 form .button input {

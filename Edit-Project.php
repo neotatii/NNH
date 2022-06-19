@@ -73,10 +73,10 @@
         </div>
         <div class="app-content">
         <div class="app-sidebar">
-          <a href="" class="app-sidebar-link ">
+          <a href="/projects.php" class="app-sidebar-link ">
             <i class="fa-solid fa-diagram-project"></i>
           </a>
-          <a href="" class="app-sidebar-link active">
+          <a href="/clients.php" class="app-sidebar-link active">
             <i class="fa-solid fa-user-group"></i>
           </a>
           <a href="" class="app-sidebar-link">
