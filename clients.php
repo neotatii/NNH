@@ -250,7 +250,6 @@
             include_once("config.php"); 
             include_once("login.php");
             include_once("deleteClient.php");
-            //include_once("editClient.php");
             if(isset($_SESSION['message'])):
               echo '<div class="alert alert-'.$_SESSION['msg_type'].'">';
               echo $_SESSION['message'];
